@@ -7,7 +7,6 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-
     </div>
   )
 }
