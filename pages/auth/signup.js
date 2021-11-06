@@ -12,7 +12,7 @@ export default function Signup() {
       .post('/users/signup', { name, email, password, passwordConfirm })
       .then((response) => {
         console.log(response);
-        router.push(routePaths.home);
+        router.push('/');
       })
       .catch((error) => {
         console.log(error.response?.data?.message);

@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 
 import Login from '@/modules/shared/Login';
 import axios from '@/utils/axios';
-import routePaths from '@/route-paths';
 
 export default function Signin() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -13,7 +12,7 @@ export default function Signin() {
       .post('/users/signin', { email, password })
       .then((response) => {
         console.log(response);
-        router.push(routePaths.home);
+        router.push('/');
       })
       .catch((error) => {
         console.log(error.response?.data?.message);
