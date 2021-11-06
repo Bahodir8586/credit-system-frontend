@@ -7,9 +7,9 @@ import axios from '@/utils/axios';
 export default function Signup() {
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
-  const registerHandler = (email, password) => {
+  const registerHandler = (name, email, password, passwordConfirm) => {
     axios
-      .post('/users/signup', { email, password })
+      .post('/users/signup', { name, email, password, passwordConfirm })
       .then((response) => {
         console.log(response);
         router.push(routePaths.home);
@@ -19,5 +19,10 @@ export default function Signup() {
         setErrorMessage(error.response?.data?.message);
       });
   };
-  return <Register submitForm={(e, p) => registerHandler(e, p)} errorMessage={errorMessage} />;
+  return (
+    <Register
+      submitForm={(n, e, p, pc) => registerHandler(n, e, p, pc)}
+      errorMessage={errorMessage}
+    />
+  );
 }

@@ -15,14 +15,16 @@ const Register = ({ submitForm, errorMessage }) => {
             className="space-y-6"
             onSubmit={(e) => {
               e.preventDefault();
-              submitForm(email, password);
+              submitForm(name, email, password, passwordConfirm);
             }}
           >
             <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
               Get your free account
             </h2>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Full name</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Full name <span className="text-red-600 font-bold">*</span>
+              </label>
               <div className="mt-1">
                 <input
                   name="name"
@@ -37,7 +39,9 @@ const Register = ({ submitForm, errorMessage }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email address</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Email address <span className="text-red-600 font-bold">*</span>
+              </label>
               <div className="mt-1">
                 <input
                   name="email"
@@ -52,7 +56,9 @@ const Register = ({ submitForm, errorMessage }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Password</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Password <span className="text-red-600 font-bold">*</span>
+              </label>
               <div className="mt-1">
                 <input
                   name="password"
@@ -67,7 +73,9 @@ const Register = ({ submitForm, errorMessage }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Password Confirm</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Password Confirm <span className="text-red-600 font-bold">*</span>
+              </label>
               <div className="mt-1">
                 <input
                   name="passwordConfirm"

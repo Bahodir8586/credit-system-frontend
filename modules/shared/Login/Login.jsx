@@ -20,7 +20,9 @@ const Login = ({ submitForm, errorMessage }) => {
               Sign in to your account
             </h2>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email address</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Email address <span className="text-red-600 font-bold">*</span>
+              </label>
               <div className="mt-1">
                 <input
                   name="email"
@@ -35,7 +37,9 @@ const Login = ({ submitForm, errorMessage }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Password</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Password <span className="text-red-600 font-bold">*</span>
+              </label>
               <div className="mt-1">
                 <input
                   name="password"
