@@ -5,22 +5,7 @@ import Reset from '@/modules/shared/ResetPassword';
 import axios from '@/utils/axios';
 
 export async function getServerSideProps(context) {
-  const cookies = context.req.headers.cookie?.split('; ').reduce((prevValue, currentValue) => {
-    const key = currentValue.split('=')[0];
-    prevValue[key] = currentValue.split('=')[1];
-    return prevValue;
-  }, {});
-  if (cookies?.jwt) {
-    const response = await fetch('http://localhost:5000/api/users', {
-      headers: {
-        Authorization: `Bearer ${cookies.jwt}`,
-      },
-    });
-    const data = await response.json();
-    if (data.status === 'error' || data.status === 'fail') {
-      // Clear the cookie and permit to access
-      return { props: {} };
-    }
+  if (isAuthenticated(context).status) {
     return {
       redirect: {
         destination: '/',
