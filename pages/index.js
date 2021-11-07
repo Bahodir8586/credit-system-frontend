@@ -1,13 +1,12 @@
-import routePaths from '@/route-paths';
 import Head from 'next/head';
+import Cookies from 'js-cookie';
+
+import routePaths from '@/route-paths';
+import { isAuthenticated } from '@/utils/auth';
 
 export async function getServerSideProps(context) {
-  const cookies = context.req.headers.cookie?.split('; ').reduce((prevValue, currentValue) => {
-    const key = currentValue.split('=')[0];
-    prevValue[key] = currentValue.split('=')[1];
-    return prevValue;
-  }, {});
-  if (!cookies?.jwt) {
+  if (!isAuthenticated(context).status) {
+    Cookies.remove('jwt');
     return {
       redirect: {
         destination: routePaths.signin,
@@ -15,23 +14,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const response = await fetch('http://localhost:5000/api/users', {
-    headers: {
-      Authorization: `Bearer ${cookies.jwt}`,
-    },
-  });
-  const data = await response.json();
-  if (data.status === 'error' || data.status === 'fail') {
-    return {
-      redirect: {
-        destination: routePaths.signin,
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {},
-  };
+  return { props: {} };
 }
 
 export default function Home() {

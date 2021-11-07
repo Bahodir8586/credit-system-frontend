@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import Reset from '@/modules/shared/ResetPassword';
 import axios from '@/utils/axios';
+import { isAuthenticated } from '@/utils/auth';
 
 export async function getServerSideProps(context) {
   if (isAuthenticated(context).status) {
