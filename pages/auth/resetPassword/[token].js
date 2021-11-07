@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -34,5 +35,13 @@ export default function ResetPassword() {
         setErrorMessage(error.response?.data?.message);
       });
   };
-  return <Reset submitForm={(p, pc) => resetPasswordHandler(p, pc)} errorMessage={errorMessage} />;
+  return (
+    <div>
+      <Head>
+        <title>Reset Password</title>
+        <meta name="description" content="Credit system application" />
+      </Head>
+      <Reset submitForm={(p, pc) => resetPasswordHandler(p, pc)} errorMessage={errorMessage} />
+    </div>
+  );
 }

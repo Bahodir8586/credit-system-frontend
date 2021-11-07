@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -33,5 +34,13 @@ export default function ForgotPassword() {
         setErrorMessage(error.response?.data?.message);
       });
   };
-  return <Forgot submitForm={(e) => forgotPasswordHandler(e)} errorMessage={errorMessage} />;
+  return (
+    <div>
+      <Head>
+        <title>Forgot Password</title>
+        <meta name="description" content="Credit system application" />
+      </Head>
+      <Forgot submitForm={(e) => forgotPasswordHandler(e)} errorMessage={errorMessage} />
+    </div>
+  );
 }

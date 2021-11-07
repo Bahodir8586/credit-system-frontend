@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -34,9 +35,15 @@ export default function Signup() {
       });
   };
   return (
-    <Register
-      submitForm={(n, e, p, pc) => registerHandler(n, e, p, pc)}
-      errorMessage={errorMessage}
-    />
+    <div>
+      <Head>
+        <title>Register</title>
+        <meta name="description" content="Credit system application" />
+      </Head>
+      <Register
+        submitForm={(n, e, p, pc) => registerHandler(n, e, p, pc)}
+        errorMessage={errorMessage}
+      />
+    </div>
   );
 }

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -33,5 +34,13 @@ export default function Signin() {
         setErrorMessage(error.response?.data?.message);
       });
   };
-  return <Login submitForm={(e, p) => loginHandler(e, p)} errorMessage={errorMessage} />;
+  return (
+    <div>
+      <Head>
+        <title>Login</title>
+        <meta name="description" content="Credit system application" />
+      </Head>
+      <Login submitForm={(e, p) => loginHandler(e, p)} errorMessage={errorMessage} />
+    </div>
+  );
 }
