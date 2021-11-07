@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Forgot from '@/modules/shared/ForgotPassword';
 import axios from '@/utils/axios';
 import { isAuthenticated } from '@/utils/auth';
+import routePaths from '@/route-paths';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -27,7 +28,7 @@ export default function ForgotPassword() {
       .post('/users/forgotPassword', { email })
       .then((response) => {
         console.log(response);
-        router.push('/');
+        router.push(`${routePaths.resetPassword}/${response.data.token}`);
       })
       .catch((error) => {
         console.log(error.response?.data?.message);
