@@ -6,7 +6,8 @@ import axios from '@/utils/axios';
 import { isAuthenticated } from '@/utils/auth';
 
 export async function getServerSideProps(context) {
-  if (isAuthenticated(context).status) {
+  const data = await isAuthenticated(context);
+  if (data.status) {
     return {
       redirect: {
         destination: '/',

@@ -5,7 +5,9 @@ import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 
 export async function getServerSideProps(context) {
-  if (!isAuthenticated(context).status) {
+  const data = await isAuthenticated(context);
+  console.log(data);
+  if (!data.status) {
     Cookies.remove('jwt');
     return {
       redirect: {

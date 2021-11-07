@@ -1,4 +1,4 @@
-exports.isAuthenticated = (context) => {
+exports.isAuthenticated = async (context) => {
   // Get cookies as objects
   const cookies = context.req.headers.cookie?.split('; ').reduce((prevValue, currentValue) => {
     const key = currentValue.split('=')[0];
@@ -18,7 +18,7 @@ exports.isAuthenticated = (context) => {
       return { status: false };
     }
     // Only if jwt is checked by server
-    return { status: true, role: data.role };
+    return { status: true, role: data.data?.user?.role };
   }
   return { status: false };
 };
