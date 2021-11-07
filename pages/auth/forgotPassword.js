@@ -21,14 +21,14 @@ export async function getServerSideProps(context) {
 }
 
 export default function ForgotPassword() {
+  const [showForm, setShowForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  const router = useRouter();
   const forgotPasswordHandler = (email) => {
     axios
       .post('/users/forgotPassword', { email })
       .then((response) => {
         console.log(response);
-        router.push(`${routePaths.resetPassword}/${response.data.token}`);
+        setShowForm(false);
       })
       .catch((error) => {
         console.log(error.response?.data?.message);
@@ -41,7 +41,19 @@ export default function ForgotPassword() {
         <title>Forgot Password</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <Forgot submitForm={(e) => forgotPasswordHandler(e)} errorMessage={errorMessage} />
+      {showForm ? (
+        <Forgot submitForm={(e) => forgotPasswordHandler(e)} errorMessage={errorMessage} />
+      ) : (
+        <div className={'text-2xl font-semibold my-20 text-center'}>
+          Your token is sent to your mail
+          <span
+            className={'text-blue-500 cursor-pointer hover:underline hover:text-blue-700 block'}
+            onClick={() => setShowForm(true)}
+          >
+            Resend it
+          </span>
+        </div>
+      )}
     </div>
   );
 }
