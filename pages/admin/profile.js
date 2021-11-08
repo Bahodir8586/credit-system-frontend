@@ -24,7 +24,6 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  //   Extra check for the role there
   return { props: {} };
 }
 
