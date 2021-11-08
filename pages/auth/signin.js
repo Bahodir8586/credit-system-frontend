@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Login from '@/modules/auth/Login';
 import axios from '@/utils/axios';
 import { isAuthenticated } from '@/utils/auth';
+import routePaths from '@/route-paths';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -27,7 +28,10 @@ export default function Signin() {
       .post('/users/signin', { email, password })
       .then((response) => {
         console.log(response);
-        router.push('/');
+        const role = response.data?.data?.user.role;
+        if (role) {
+          router.push(routePaths[role][index]);
+        }
       })
       .catch((error) => {
         console.log(error.response?.data?.message);
