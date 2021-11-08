@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { routePaths } from '@/route-paths';
+import routePaths from '@/route-paths';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -67,7 +67,7 @@ const Sidebar = () => {
         </div>
         <nav className="mt-6">
           <div>
-            {navbar.links.map((el) => (
+            {navbar.map((el) => (
               <Link href={el.url} key={el.url}>
                 <a
                   className={`w-full font-thin uppercase flex items-center p-4 my-2 transition-colors duration-200
