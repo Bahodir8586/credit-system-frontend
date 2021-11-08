@@ -7,17 +7,20 @@ const routePaths = {
     home: '/admin',
     profile: '/admin/profile',
   },
-  // manager: {
-  //   home: '/manager',
-  // },
-  // assistant: {
-  //   home: '/assistant',
-  // },
-  // warehouseManager: {
-  //   home: '/warehouse-manager',
-  // },
-  // user: {
-  //   profile: '/user/profile',
-  // },
+  manager: {
+    home: '/manager',
+    profile: '/manager/profile',
+  },
+  assistant: {
+    home: '/assistant',
+    profile: '/assistant/profile',
+  },
+  warehouseManager: {
+    home: '/warehouse-manager',
+    profile: '/warehouse-manager/profile',
+  },
+  user: {
+    profile: '/user/profile',
+  },
 };
 export default routePaths;
