@@ -1,45 +1,80 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import {
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   MenuIcon,
   UsersIcon,
+  UserIcon,
+  UserGroupIcon,
+  OfficeBuildingIcon,
+  ClipboardListIcon,
+  DatabaseIcon,
+  CurrencyDollarIcon,
+  ArrowCircleLeftIcon,
+  ArrowCircleRightIcon,
   XIcon,
 } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 
+import routePaths from '@/route-paths';
+
 const navigation = {
   admin: [
-    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Employees', href: '#', icon: UsersIcon, current: false },
-    { name: 'Warehouse', href: '#', icon: FolderIcon, current: false },
-    { name: 'Shops', href: '#', icon: CalendarIcon, current: false },
-    { name: 'Teams', href: '#', icon: InboxIcon, current: false },
-    { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+    { name: 'Profile', href: routePaths.admin.profile, icon: UserIcon, current: false },
+    { name: 'Dashboard', href: routePaths.admin.index, icon: HomeIcon, current: true },
+    { name: 'Employees', href: routePaths.admin.employees.index, icon: UsersIcon, current: false },
+    {
+      name: 'Warehouse',
+      href: routePaths.admin.warehouse.index,
+      icon: DatabaseIcon,
+      current: false,
+    },
+    { name: 'Shops', href: routePaths.admin.shops.index, icon: OfficeBuildingIcon, current: false },
+    { name: 'Teams', href: routePaths.admin.managers.index, icon: UserGroupIcon, current: false },
   ],
   manager: [
-    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Team', href: '#', icon: UsersIcon, current: false },
-    { name: 'Credits', href: '#', icon: UsersIcon, current: false },
-    { name: 'Sales', href: '#', icon: UsersIcon, current: false },
+    { name: 'Profile', href: routePaths.manager.profile, icon: UserIcon, current: false },
+    { name: 'Dashboard', href: routePaths.manager.index, icon: HomeIcon, current: true },
+    { name: 'Team', href: routePaths.manager.team, icon: UsersIcon, current: false },
+    {
+      name: 'Credits',
+      href: routePaths.manager.credits.index,
+      icon: ClipboardListIcon,
+      current: false,
+    },
+    {
+      name: 'Sales',
+      href: routePaths.manager.sales.index,
+      icon: CurrencyDollarIcon,
+      current: false,
+    },
   ],
   assistant: [
-    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Credits', href: '#', icon: UsersIcon, current: false },
-    { name: 'Sales', href: '#', icon: UsersIcon, current: false },
+    { name: 'Profile', href: routePaths.assistant.profile, icon: UserIcon, current: false },
+    { name: 'Dashboard', href: routePaths.assistant.index, icon: HomeIcon, current: true },
+    {
+      name: 'Credits',
+      href: routePaths.assistant.credits,
+      icon: ClipboardListIcon,
+      current: false,
+    },
+    { name: 'Sales', href: routePaths.assistant.sales, icon: CurrencyDollarIcon, current: false },
   ],
   warehouseManager: [
-    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
-    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'In', href: '#', icon: UsersIcon, current: false },
-    { name: 'Out', href: '#', icon: UsersIcon, current: false },
+    { name: 'Profile', href: routePaths.warehouseManager.profile, icon: UserIcon, current: false },
+    { name: 'Dashboard', href: routePaths.warehouseManager.index, icon: HomeIcon, current: true },
+    {
+      name: 'In',
+      href: routePaths.warehouseManager.in.index,
+      icon: ArrowCircleLeftIcon,
+      current: false,
+    },
+    {
+      name: 'Out',
+      href: routePaths.warehouseManager.out.index,
+      icon: ArrowCircleRightIcon,
+      current: false,
+    },
   ],
 };
 
@@ -137,25 +172,6 @@ const AdminLayout = ({ pageTitle, ...props }) => {
                   ))}
                 </nav>
               </div>
-              <div className="flex-shrink-0 flex bg-gray-700 p-4">
-                <a href="#" className="flex-shrink-0 group block">
-                  <div className="flex items-center">
-                    <div>
-                      <img
-                        className="inline-block h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <p className="text-base font-medium text-white">Tom Cook</p>
-                      <p className="text-sm font-medium text-gray-400 group-hover:text-gray-300">
-                        View profile
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </div>
             </div>
           </Transition.Child>
           <div className="flex-shrink-0 w-14">
@@ -200,25 +216,6 @@ const AdminLayout = ({ pageTitle, ...props }) => {
                   </a>
                 ))}
               </nav>
-            </div>
-            <div className="flex-shrink-0 flex bg-gray-700 p-4">
-              <a href="#" className="flex-shrink-0 w-full group block">
-                <div className="flex items-center">
-                  <div>
-                    <img
-                      className="inline-block h-9 w-9 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-white">Tom Cook</p>
-                    <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                      View profile
-                    </p>
-                  </div>
-                </div>
-              </a>
             </div>
           </div>
         </div>
