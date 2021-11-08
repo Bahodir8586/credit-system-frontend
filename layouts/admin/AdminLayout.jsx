@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import {
   HomeIcon,
@@ -18,75 +18,103 @@ import { useRouter } from 'next/router';
 
 import routePaths from '@/route-paths';
 
-const navigation = {
-  admin: [
-    { name: 'Profile', href: routePaths.admin.profile, icon: UserIcon, current: false },
-    { name: 'Dashboard', href: routePaths.admin.index, icon: HomeIcon, current: true },
-    { name: 'Employees', href: routePaths.admin.employees.index, icon: UsersIcon, current: false },
-    {
-      name: 'Warehouse',
-      href: routePaths.admin.warehouse.index,
-      icon: DatabaseIcon,
-      current: false,
-    },
-    { name: 'Shops', href: routePaths.admin.shops.index, icon: OfficeBuildingIcon, current: false },
-    { name: 'Teams', href: routePaths.admin.managers.index, icon: UserGroupIcon, current: false },
-  ],
-  manager: [
-    { name: 'Profile', href: routePaths.manager.profile, icon: UserIcon, current: false },
-    { name: 'Dashboard', href: routePaths.manager.index, icon: HomeIcon, current: true },
-    { name: 'Team', href: routePaths.manager.team, icon: UsersIcon, current: false },
-    {
-      name: 'Credits',
-      href: routePaths.manager.credits.index,
-      icon: ClipboardListIcon,
-      current: false,
-    },
-    {
-      name: 'Sales',
-      href: routePaths.manager.sales.index,
-      icon: CurrencyDollarIcon,
-      current: false,
-    },
-  ],
-  assistant: [
-    { name: 'Profile', href: routePaths.assistant.profile, icon: UserIcon, current: false },
-    { name: 'Dashboard', href: routePaths.assistant.index, icon: HomeIcon, current: true },
-    {
-      name: 'Credits',
-      href: routePaths.assistant.credits,
-      icon: ClipboardListIcon,
-      current: false,
-    },
-    { name: 'Sales', href: routePaths.assistant.sales, icon: CurrencyDollarIcon, current: false },
-  ],
-  warehouseManager: [
-    { name: 'Profile', href: routePaths.warehouseManager.profile, icon: UserIcon, current: false },
-    { name: 'Dashboard', href: routePaths.warehouseManager.index, icon: HomeIcon, current: true },
-    {
-      name: 'In',
-      href: routePaths.warehouseManager.in.index,
-      icon: ArrowCircleLeftIcon,
-      current: false,
-    },
-    {
-      name: 'Out',
-      href: routePaths.warehouseManager.out.index,
-      icon: ArrowCircleRightIcon,
-      current: false,
-    },
-  ],
-};
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const AdminLayout = ({ pageTitle, ...props }) => {
+  const [navigation, setNavigation] = useState({
+    admin: [
+      { name: 'Profile', href: routePaths.admin.profile, icon: UserIcon, current: false },
+      { name: 'Dashboard', href: routePaths.admin.index, icon: HomeIcon, current: true },
+      {
+        name: 'Employees',
+        href: routePaths.admin.employees.index,
+        icon: UsersIcon,
+        current: false,
+      },
+      {
+        name: 'Warehouse',
+        href: routePaths.admin.warehouse.index,
+        icon: DatabaseIcon,
+        current: false,
+      },
+      {
+        name: 'Shops',
+        href: routePaths.admin.shops.index,
+        icon: OfficeBuildingIcon,
+        current: false,
+      },
+      { name: 'Teams', href: routePaths.admin.managers.index, icon: UserGroupIcon, current: false },
+    ],
+    manager: [
+      { name: 'Profile', href: routePaths.manager.profile, icon: UserIcon, current: false },
+      { name: 'Dashboard', href: routePaths.manager.index, icon: HomeIcon, current: true },
+      { name: 'Team', href: routePaths.manager.team, icon: UsersIcon, current: false },
+      {
+        name: 'Credits',
+        href: routePaths.manager.credits.index,
+        icon: ClipboardListIcon,
+        current: false,
+      },
+      {
+        name: 'Sales',
+        href: routePaths.manager.sales.index,
+        icon: CurrencyDollarIcon,
+        current: false,
+      },
+    ],
+    assistant: [
+      { name: 'Profile', href: routePaths.assistant.profile, icon: UserIcon, current: false },
+      { name: 'Dashboard', href: routePaths.assistant.index, icon: HomeIcon, current: true },
+      {
+        name: 'Credits',
+        href: routePaths.assistant.credits,
+        icon: ClipboardListIcon,
+        current: false,
+      },
+      { name: 'Sales', href: routePaths.assistant.sales, icon: CurrencyDollarIcon, current: false },
+    ],
+    warehouseManager: [
+      {
+        name: 'Profile',
+        href: routePaths.warehouseManager.profile,
+        icon: UserIcon,
+        current: false,
+      },
+      { name: 'Dashboard', href: routePaths.warehouseManager.index, icon: HomeIcon, current: true },
+      {
+        name: 'In',
+        href: routePaths.warehouseManager.in.index,
+        icon: ArrowCircleLeftIcon,
+        current: false,
+      },
+      {
+        name: 'Out',
+        href: routePaths.warehouseManager.out.index,
+        icon: ArrowCircleRightIcon,
+        current: false,
+      },
+    ],
+  });
+
   const router = useRouter();
   const role = router.asPath.split('/')[1];
-  console.log(role);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    const fullNavObject = { ...navigation };
+    const newNav = [...fullNavObject[role]];
+    const currentlyActive = newNav.find((el) => el.current);
+    const currentlyClicked = newNav.find((el) => el.href === router.asPath);
+    if (currentlyClicked.href === currentlyActive.href) {
+      return;
+    }
+    currentlyActive.current = false;
+    currentlyClicked.current = true;
+    fullNavObject[role] = newNav;
+    setNavigation(fullNavObject);
+  }, [router.asPath, role]);
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
