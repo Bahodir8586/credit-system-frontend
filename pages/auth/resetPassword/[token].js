@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import Reset from '@/modules/shared/ResetPassword';
+import Reset from '@/modules/auth/ResetPassword';
 import axios from '@/utils/axios';
 import { isAuthenticated } from '@/utils/auth';
 

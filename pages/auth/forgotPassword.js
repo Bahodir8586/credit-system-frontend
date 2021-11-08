@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 
-import Forgot from '@/modules/shared/ForgotPassword';
+import Forgot from '@/modules/auth/ForgotPassword';
 import axios from '@/utils/axios';
 import { isAuthenticated } from '@/utils/auth';
-import routePaths from '@/route-paths';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
