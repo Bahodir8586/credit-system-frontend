@@ -29,20 +29,18 @@ const routePaths = {
         },
       },
     },
-    manager: {
+    managers: {
       index: '/admin/managers',
-      id: '/admin/managers/id',
       team: {
-        index: '/admin/manager/team',
-        sales: '/admin/manager/team/sales',
-        credits: '/admin/manager/team/credits',
+        index: '/admin/managers/team',
+        sales: '/admin/managers/team/sales',
+        credits: '/admin/managers/team/credits',
       },
-      sales: '/admin/manager/sales',
-      credits: '/admin/manager/credits',
+      sales: '/admin/managers/sales',
+      credits: '/admin/managers/credits',
     },
-    assistant: {
+    assistants: {
       index: '/admin/assistants',
-      id: '/admin/assistants/id',
       sales: '/admin/assistants/sales',
       credits: '/admin/assistants/credits',
     },
@@ -54,12 +52,12 @@ const routePaths = {
     credits: {
       index: '/manager/credits',
       own: '/manager/credits/own',
-      add: '/assistant/credits/add',
+      add: '/manager/credits/add',
     },
     sales: {
       index: '/manager/sales',
       own: '/manager/sales/own',
-      add: '/assistant/sales/add',
+      add: '/manager/sales/add',
     },
     assistants: {
       index: '/manager/assistants',
