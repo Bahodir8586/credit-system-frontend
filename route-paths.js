@@ -13,19 +13,20 @@ const routePaths = {
     profile: '/manager/profile',
     team: '/manager/team',
     credits: {
-      index: '/manager/credits/all',
+      index: '/manager/credits',
       own: '/manager/credits/own',
       add: '/assistant/credits/add',
     },
     sales: {
-      index: '/manager/sales/all',
+      index: '/manager/sales',
       own: '/manager/sales/own',
       add: '/assistant/sales/add',
     },
-    assistant: {
-      index: '/manager/assistant',
-      sales: '/manager/assistant/id/sales',
-      credits: '/manager/assistant/id/credits',
+    assistants: {
+      index: '/manager/assistants',
+      one: '/manager/assistants/id',
+      sales: '/manager/assistants/sales/id',
+      credits: '/manager/assistants/credits/id',
     },
   },
   assistant: {
