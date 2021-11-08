@@ -2,29 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+import { routePaths } from '@/route-paths';
+
 const Sidebar = () => {
   const router = useRouter();
-  const navbar = [
-    {
-      role: 'admin',
-      links: [{ url: '/admin/profile', name: 'Profile' }],
-    },
-    {
-      role: 'librarian',
-      links: [{ url: '/librarian/profile', name: 'Profile' }],
-    },
-    {
-      role: 'user',
-      links: [{ url: '/user/profile', name: 'Profile' }],
-    },
-  ];
-
-  const role = router.asPath.split('/')[1];
-  const [currentRoute, setCurrentRoute] = useState(`${role}/profile`);
+  const [currentRoute, setCurrentRoute] = useState(`/admin/profile`);
 
   useEffect(() => {
-    setCurrentRoute(router.asPath);
+    setCurrentRoute(router.pathname);
   }, [router.asPath]);
+
+  const navbar = [{ url: routePaths.admin.profile, name: 'Profile' }];
 
   const logOut = () => {
     localStorage.removeItem('accessToken');
@@ -79,34 +67,32 @@ const Sidebar = () => {
         </div>
         <nav className="mt-6">
           <div>
-            {navbar
-              .find((el) => el.role === role)
-              .links.map((el) => (
-                <Link href={el.url} key={el.url}>
-                  <a
-                    className={`w-full font-thin uppercase flex items-center p-4 my-2 transition-colors duration-200
+            {navbar.links.map((el) => (
+              <Link href={el.url} key={el.url}>
+                <a
+                  className={`w-full font-thin uppercase flex items-center p-4 my-2 transition-colors duration-200
 							justify-start ${
                 el.url === currentRoute
                   ? 'text-blue-500 bg-gradient-to-r from-white to-blue-100 border-r-4 border-blue-500 dark:from-gray-700 dark:to-gray-800\n' +
                     'border-r-4 border-blue-500'
                   : 'text-gray-500 dark:text-gray-200 hover:text-blue-500'
               }`}
-                  >
-                    <span className="text-left">
-                      <svg
-                        width="20"
-                        height="20"
-                        fill="currentColor"
-                        viewBox="0 0 2048 1792"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"></path>
-                      </svg>
-                    </span>
-                    <span className="mx-4 text-sm font-normal">{el.name}</span>
-                  </a>
-                </Link>
-              ))}
+                >
+                  <span className="text-left">
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      viewBox="0 0 2048 1792"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"></path>
+                    </svg>
+                  </span>
+                  <span className="mx-4 text-sm font-normal">{el.name}</span>
+                </a>
+              </Link>
+            ))}
             <a
               onClick={logOut}
               className={`w-full font-thin uppercase flex items-center p-4 my-2 transition-colors duration-200 justify-start text-gray-500 dark:text-gray-200 hover:text-blue-500`}
