@@ -10,21 +10,47 @@ import {
   UsersIcon,
   XIcon,
 } from '@heroicons/react/outline';
+import { useRouter } from 'next/router';
 
-const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
-];
+const navigation = {
+  admin: [
+    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
+    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+    { name: 'Employees', href: '#', icon: UsersIcon, current: false },
+    { name: 'Warehouse', href: '#', icon: FolderIcon, current: false },
+    { name: 'Shops', href: '#', icon: CalendarIcon, current: false },
+    { name: 'Teams', href: '#', icon: InboxIcon, current: false },
+    { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  ],
+  manager: [
+    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
+    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+    { name: 'Team', href: '#', icon: UsersIcon, current: false },
+    { name: 'Credits', href: '#', icon: UsersIcon, current: false },
+    { name: 'Sales', href: '#', icon: UsersIcon, current: false },
+  ],
+  assistant: [
+    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
+    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+    { name: 'Credits', href: '#', icon: UsersIcon, current: false },
+    { name: 'Sales', href: '#', icon: UsersIcon, current: false },
+  ],
+  warehouseManager: [
+    { name: 'Profile', href: '#', icon: UsersIcon, current: false },
+    { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+    { name: 'In', href: '#', icon: UsersIcon, current: false },
+    { name: 'Out', href: '#', icon: UsersIcon, current: false },
+  ],
+};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const AdminLayout = ({ pageTitle, ...props }) => {
+  const router = useRouter();
+  const role = router.asPath.split('/')[1];
+  console.log(role);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -86,7 +112,7 @@ const AdminLayout = ({ pageTitle, ...props }) => {
                   />
                 </div>
                 <nav className="mt-5 px-2 space-y-1">
-                  {navigation.map((item) => (
+                  {navigation[role].map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
@@ -152,7 +178,7 @@ const AdminLayout = ({ pageTitle, ...props }) => {
                 />
               </div>
               <nav className="mt-5 flex-1 px-2 bg-gray-800 space-y-1">
-                {navigation.map((item) => (
+                {navigation[role].map((item) => (
                   <a
                     key={item.name}
                     href={item.href}

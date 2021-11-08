@@ -79,15 +79,15 @@ const routePaths = {
     },
   },
   warehouseManager: {
-    index: '/warehouse-manager',
-    profile: '/warehouse-manager/profile',
+    index: '/warehouseManager',
+    profile: '/warehouseManager/profile',
     in: {
-      index: '/warehouse-manager/in',
-      add: '/warehouse-manager/in/add',
+      index: '/warehouseManager/in',
+      add: '/warehouseManager/in/add',
     },
     out: {
-      index: '/warehouse-manager/out',
-      add: '/warehouse-manager/out/add',
+      index: '/warehouseManager/out',
+      add: '/warehouseManager/out/add',
     },
   },
   user: {
