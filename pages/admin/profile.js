@@ -16,6 +16,14 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  if (context.resolvedUrl.split('/')[1] !== data.role) {
+    return {
+      redirect: {
+        destination: routePaths[data.role].profile,
+        permanent: false,
+      },
+    };
+  }
   //   Extra check for the role there
   return { props: {} };
 }
