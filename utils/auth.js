@@ -7,18 +7,23 @@ exports.isAuthenticated = async (context) => {
   }, {});
   // Check if jwt cookie exist
   if (cookies?.jwt) {
-    const response = await fetch('http://localhost:5000/api/users/verify', {
-      headers: {
-        Authorization: `Bearer ${cookies.jwt}`,
-      },
-    });
-    const data = await response.json();
-    if (data.status === 'error' || data.status === 'fail') {
-      // If jwt is malformed
+    try {
+      const response = await fetch('http://localhost:5000/api/users/verify', {
+        headers: {
+          Authorization: `Bearer ${cookies.jwt}`,
+        },
+      });
+      const data = await response.json();
+      if (data.status === 'error' || data.status === 'fail') {
+        // If jwt is malformed
+        return { status: false };
+      }
+      // Only if jwt is checked by server
+      return { status: true, role: data.data?.user?.role };
+    } catch (e) {
+      console.log(e);
       return { status: false };
     }
-    // Only if jwt is checked by server
-    return { status: true, role: data.data?.user?.role };
   }
   return { status: false };
 };
