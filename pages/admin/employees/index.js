@@ -4,6 +4,8 @@ import Cookies from 'js-cookie';
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
+import EmployeeTable from '@/modules/admin/employeeTable';
+import EmployeeFilter from '@/modules/admin/employeeFilter';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -30,16 +32,18 @@ export async function getServerSideProps(context) {
 
 const people = [
   {
+    id: 1,
     name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
+    branch: { id: 1, name: 'Regional Paradigm Technician' },
     role: 'Manager',
     email: 'jane.cooper@example.com',
   },
   {
-    name: 'Cody Fisher',
-    title: 'Product Directives Officer',
-    role: 'Manager',
-    email: 'cody.fisher@example.com',
+    id: 4,
+    name: 'John Doe',
+    branch: { id: 2, name: 'Product Directives Officer' },
+    role: 'Assistant',
+    email: 'john.doe@example.com',
   },
   // More people...
 ];

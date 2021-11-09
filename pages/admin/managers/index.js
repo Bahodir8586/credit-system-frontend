@@ -32,14 +32,16 @@ export async function getServerSideProps(context) {
 
 const people = [
   {
+    id: 1,
     name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
+    branch: { id: 1, name: 'Regional Paradigm Technician' },
     role: 'Manager',
     email: 'jane.cooper@example.com',
   },
   {
+    id: 2,
     name: 'Cody Fisher',
-    title: 'Product Directives Officer',
+    branch: { id: 2, name: 'Product Directives Officer' },
     role: 'Manager',
     email: 'cody.fisher@example.com',
   },

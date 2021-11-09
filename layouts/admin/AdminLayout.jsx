@@ -106,7 +106,7 @@ const AdminLayout = ({ pageTitle, ...props }) => {
     const fullNavObject = { ...navigation };
     const newNav = [...fullNavObject[role]];
     const currentlyActive = newNav.find((el) => el.current);
-    const currentlyClicked = newNav.find((el) => el.href === router.asPath);
+    const currentlyClicked = newNav.find((el) => el.href === router.pathname.replace('/[id]', ''));
     if (currentlyClicked.href === currentlyActive.href) {
       return;
     }

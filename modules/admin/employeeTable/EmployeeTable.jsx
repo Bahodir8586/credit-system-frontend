@@ -1,3 +1,5 @@
+import routePaths from '@/route-paths';
+import Link from 'next/link';
 
 const EmployeeTable = ({ people }) => {
   return (
@@ -44,10 +46,14 @@ const EmployeeTable = ({ people }) => {
                     className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
                   >
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {person.name}
+                      <Link href={`${routePaths.admin.employees.index}/${person.id}`}>
+                        <a>{person.name}</a>
+                      </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {person.title}
+                      <Link href={`${routePaths.admin.shops.index}/${person.branch.id}`}>
+                        {person.branch.name}
+                      </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {person.email}
@@ -56,9 +62,9 @@ const EmployeeTable = ({ people }) => {
                       {person.role}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                        Edit
-                      </a>
+                      <Link href={`${routePaths.admin.employees.index}/${person.id}`}>
+                        <a className="text-indigo-600 hover:text-indigo-900">Edit</a>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -70,4 +76,4 @@ const EmployeeTable = ({ people }) => {
     </div>
   );
 };
-export default employeeTable;
+export default EmployeeTable;
