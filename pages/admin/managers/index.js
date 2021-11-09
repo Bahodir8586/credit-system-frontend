@@ -25,8 +25,25 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  // Get managers list there
   return { props: {} };
 }
+
+const people = [
+  {
+    name: 'Jane Cooper',
+    title: 'Regional Paradigm Technician',
+    role: 'Manager',
+    email: 'jane.cooper@example.com',
+  },
+  {
+    name: 'Cody Fisher',
+    title: 'Product Directives Officer',
+    role: 'Manager',
+    email: 'cody.fisher@example.com',
+  },
+  // More people...
+];
 
 export default function Home() {
   return (
@@ -36,26 +53,8 @@ export default function Home() {
         <meta name="description" content="Credit system application" />
       </Head>
       <AdminLayout pageTitle="Teams">
-        <div className="flex flex-row mb-4 justify-center w-full">
-          <form className="flex md:flex-row justify-between w-full md:space-x-3 space-y-3 md:space-y-0 md:justify-center items-center">
-            <div className="font-medium text-xl mr-2 hidden md:inline-flex">Search</div>
-            <div className=" relative ">
-              <input
-                type="text"
-                id='"form-subscribe-Filter'
-                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-72 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                placeholder="name"
-              />
-            </div>
-            <button
-              className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-              type="submit"
-            >
-              Filter
-            </button>
-          </form>
-        </div>
-        <EmployeeTable />
+        
+        <EmployeeTable people={people} />
       </AdminLayout>
     </div>
   );

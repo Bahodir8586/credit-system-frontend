@@ -1,21 +1,5 @@
-/* This example requires Tailwind CSS v2.0+ */
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-  },
-  {
-    name: 'Cody Fisher',
-    title: 'Product Directives Officer',
-    role: 'Owner',
-    email: 'cody.fisher@example.com',
-  },
-  // More people...
-];
 
-export default function Example() {
+const EmployeeTable = ({ people }) => {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -34,7 +18,7 @@ export default function Example() {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Branch
                   </th>
                   <th
                     scope="col"
@@ -85,4 +69,5 @@ export default function Example() {
       </div>
     </div>
   );
-}
+};
+export default employeeTable;
