@@ -24,17 +24,40 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  // TODO: get the list of assistants
   return { props: {} };
 }
 
+const people = [
+  {
+    name: 'Jane Cooper',
+    title: 'Regional Paradigm Technician',
+    role: 'Manager',
+    email: 'jane.cooper@example.com',
+  },
+  {
+    name: 'Cody Fisher',
+    title: 'Product Directives Officer',
+    role: 'Manager',
+    email: 'cody.fisher@example.com',
+  },
+  // More people...
+];
+
 export default function Home() {
+  const search = (name) => {
+    // TODO: search user according to name
+  };
   return (
     <div>
       <Head>
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Profile"></AdminLayout>
+      <AdminLayout pageTitle="Profile">
+        <EmployeeFilter search={search} />
+        <EmployeeTable people={people} />
+      </AdminLayout>
     </div>
   );
 }

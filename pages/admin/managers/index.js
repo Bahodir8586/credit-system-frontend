@@ -5,6 +5,7 @@ import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import EmployeeTable from '@/modules/admin/employeeTable';
+import EmployeeFilter from '@/modules/admin/employeeFilter';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -25,7 +26,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  // Get managers list there
+  // TODO: Get managers list there
   return { props: {} };
 }
 
@@ -46,6 +47,9 @@ const people = [
 ];
 
 export default function Home() {
+  const search = (name) => {
+    // TODO: search user according to name
+  };
   return (
     <div>
       <Head>
@@ -53,7 +57,7 @@ export default function Home() {
         <meta name="description" content="Credit system application" />
       </Head>
       <AdminLayout pageTitle="Teams">
-        
+        <EmployeeFilter search={search} />
         <EmployeeTable people={people} />
       </AdminLayout>
     </div>
