@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
-// TODO: page to show all shops as cards
+// TODO: page to show all branches as cards
 export default function Home() {
   return (
     <div>
@@ -35,7 +35,7 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Shops"></AdminLayout>
+      <AdminLayout pageTitle="Branches"></AdminLayout>
     </div>
   );
 }

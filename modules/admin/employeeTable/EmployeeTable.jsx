@@ -51,7 +51,7 @@ const EmployeeTable = ({ people }) => {
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <Link href={`${routePaths.admin.shops.index}/${person.branch.id}`}>
+                      <Link href={`${routePaths.admin.branches.index}/${person.branch.id}`}>
                         {person.branch.name}
                       </Link>
                     </td>

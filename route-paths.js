@@ -13,10 +13,10 @@ const routePaths = {
       sales: '/admin/employees/sales',
       credits: '/admin/employees/credits',
     },
-    shops: {
-      index: '/admin/shops',
-      add: '/admin/shops/add',
-      id: '/admin/shops/id',
+    branches: {
+      index: '/admin/branches',
+      add: '/admin/branches/add',
+      id: '/admin/branches/id',
       sales: '/admin/employees/sales',
       credits: '/admin/employees/credits',
     },

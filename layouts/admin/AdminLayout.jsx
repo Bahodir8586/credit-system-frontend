@@ -40,12 +40,11 @@ const AdminLayout = ({ pageTitle, ...props }) => {
         current: false,
       },
       {
-        name: 'Shops',
-        href: routePaths.admin.shops.index,
+        name: 'Branches',
+        href: routePaths.admin.branches.index,
         icon: OfficeBuildingIcon,
         current: false,
       },
-      { name: 'Teams', href: routePaths.admin.managers.index, icon: UserGroupIcon, current: false },
     ],
     manager: [
       { name: 'Profile', href: routePaths.manager.profile, icon: UserIcon, current: false },
