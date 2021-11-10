@@ -40,19 +40,19 @@ const EmployeeTable = ({ people }) => {
                 </tr>
               </thead>
               <tbody>
-                {people.map((person, personIdx) => (
+                {people?.map((person, personIdx) => (
                   <tr
                     key={person.email}
                     className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
                   >
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      <Link href={`${routePaths.admin.employees.index}/${person.id}`}>
+                      <Link href={`${routePaths.admin.employees.index}/${person._id}`}>
                         <a>{person.name}</a>
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <Link href={`${routePaths.admin.branches.index}/${person.branch.id}`}>
-                        {person.branch.name}
+                      <Link href={`${routePaths.admin.branches.index}/${person.branch?._id}`}>
+                        <a>{person.branch?.name}</a>
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -62,7 +62,7 @@ const EmployeeTable = ({ people }) => {
                       {person.role}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <Link href={`${routePaths.admin.employees.index}/${person.id}`}>
+                      <Link href={`${routePaths.admin.employees.index}/${person._id}`}>
                         <a className="text-indigo-600 hover:text-indigo-900">Edit</a>
                       </Link>
                     </td>

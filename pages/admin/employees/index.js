@@ -26,30 +26,25 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  const jwt = data.jwt;
   // TODO: Get employees list there
-  return { props: {} };
+  try {
+    const response = await fetch('http://localhost:5000/api/users', {
+      headers: { authorization: `Bearer ${jwt}` },
+    });
+    const data = await response.json();
+    console.log(data);
+    return {
+      props: { people: data.data?.users },
+    };
+  } catch (e) {
+    console.log(e);
+    return { props: { people: null } };
+  }
 }
 
-const people = [
-  {
-    id: 1,
-    name: 'Jane Cooper',
-    branch: { id: 1, name: 'Regional Paradigm Technician' },
-    role: 'Manager',
-    email: 'jane.cooper@example.com',
-  },
-  {
-    id: 4,
-    name: 'John Doe',
-    branch: { id: 2, name: 'Product Directives Officer' },
-    role: 'Assistant',
-    email: 'john.doe@example.com',
-  },
-  // More people...
-];
-
 // TODO: table of all employees (assistant + manager) with sort, search
-export default function Home() {
+export default function Home({ people }) {
   const search = (name) => {
     // TODO: search user according to name
   };

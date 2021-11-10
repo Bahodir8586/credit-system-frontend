@@ -19,7 +19,7 @@ exports.isAuthenticated = async (context) => {
         return { status: false };
       }
       // Only if jwt is checked by server
-      return { status: true, role: data.data?.user?.role };
+      return { status: true, role: data.data?.user?.role, jwt: cookies.jwt };
     } catch (e) {
       console.log(e);
       return { status: false };
