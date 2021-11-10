@@ -8,7 +8,7 @@ exports.isAuthenticated = async (context) => {
   // Check if jwt cookie exist
   if (cookies?.jwt) {
     try {
-      const response = await fetch('http://localhost:5000/api/users/verify', {
+      const response = await fetch('http://localhost:5000/api/auth/verify', {
         headers: {
           Authorization: `Bearer ${cookies.jwt}`,
         },

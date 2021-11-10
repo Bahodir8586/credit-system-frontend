@@ -25,7 +25,7 @@ export default function Signin() {
   const router = useRouter();
   const loginHandler = (email, password) => {
     axios
-      .post('/users/signin', { email, password })
+      .post('/auth/signin', { email, password })
       .then((response) => {
         const role = response.data.data.user.role;
         router.push(routePaths[role]['index']);

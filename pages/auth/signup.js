@@ -24,7 +24,7 @@ export default function Signup() {
   const router = useRouter();
   const registerHandler = (name, email, password, passwordConfirm) => {
     axios
-      .post('/users/signup', { name, email, password, passwordConfirm })
+      .post('/auth/signup', { name, email, password, passwordConfirm })
       .then((response) => {
         console.log(response);
         router.push('/');

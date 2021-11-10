@@ -25,7 +25,7 @@ export default function ResetPassword() {
   const resetPasswordHandler = (password, passwordConfirm) => {
     const token = router.query.token;
     axios
-      .post(`/users/resetPassword/${token}`, { password, passwordConfirm })
+      .post(`/auth/resetPassword/${token}`, { password, passwordConfirm })
       .then((response) => {
         console.log(response);
         router.push('/');

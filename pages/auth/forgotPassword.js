@@ -23,7 +23,7 @@ export default function ForgotPassword() {
   const [errorMessage, setErrorMessage] = useState('');
   const forgotPasswordHandler = (email) => {
     axios
-      .post('/users/forgotPassword', { email })
+      .post('/auth/forgotPassword', { email })
       .then((response) => {
         console.log(response);
         setShowForm(false);
