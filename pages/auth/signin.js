@@ -27,11 +27,8 @@ export default function Signin() {
     axios
       .post('/users/signin', { email, password })
       .then((response) => {
-        console.log(response);
-        const role = response.data?.data?.user.role;
-        if (role) {
-          router.push(routePaths[role][index]);
-        }
+        const role = response.data.data.user.role;
+        router.push(routePaths[role]['index']);
       })
       .catch((error) => {
         console.log(error.response?.data?.message);
