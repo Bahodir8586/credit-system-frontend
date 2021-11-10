@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: page to create new shop
 export default function Home() {
   return (
     <div>

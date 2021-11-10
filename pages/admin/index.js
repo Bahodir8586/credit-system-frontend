@@ -28,6 +28,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: all actions tables related to sales and credits with filter, sort and paginations
 export default function Home() {
   return (
     <div>

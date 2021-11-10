@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: page to create new employee
 export default function Home() {
   return (
     <div>
@@ -34,7 +35,7 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Profile"></AdminLayout>
+      <AdminLayout pageTitle="New employee"></AdminLayout>
     </div>
   );
 }

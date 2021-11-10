@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: personal data, password updating them.
 export default function Home() {
   return (
     <div>

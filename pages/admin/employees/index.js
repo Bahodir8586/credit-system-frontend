@@ -48,6 +48,7 @@ const people = [
   // More people...
 ];
 
+// TODO: table of all employees (assistant + manager) with sort, search
 export default function Home() {
   const search = (name) => {
     // TODO: search user according to name

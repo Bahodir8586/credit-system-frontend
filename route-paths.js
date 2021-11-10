@@ -10,11 +10,15 @@ const routePaths = {
       index: '/admin/employees',
       id: '/admin/employees/id',
       add: '/admin/employees/add',
+      sales: '/admin/employees/sales',
+      credits: '/admin/employees/credits',
     },
     shops: {
       index: '/admin/shops',
       add: '/admin/shops/add',
       id: '/admin/shops/id',
+      sales: '/admin/employees/sales',
+      credits: '/admin/employees/credits',
     },
     warehouse: {
       index: '/admin/warehouse',
@@ -28,21 +32,6 @@ const routePaths = {
           add: '/admin/warehouse/out/add',
         },
       },
-    },
-    managers: {
-      index: '/admin/managers',
-      team: {
-        index: '/admin/managers/team',
-        sales: '/admin/managers/team/sales',
-        credits: '/admin/managers/team/credits',
-      },
-      sales: '/admin/managers/sales',
-      credits: '/admin/managers/credits',
-    },
-    assistants: {
-      index: '/admin/assistants',
-      sales: '/admin/assistants/sales',
-      credits: '/admin/assistants/credits',
     },
   },
   manager: {

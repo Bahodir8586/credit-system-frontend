@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: information about the single shop and its employees
 export default function Home() {
   return (
     <div>

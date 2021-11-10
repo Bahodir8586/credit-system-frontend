@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: All Out actions of warehouse 
 export default function Home() {
   return (
     <div>

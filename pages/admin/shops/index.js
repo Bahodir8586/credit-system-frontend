@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+// TODO: page to show all shops as cards
 export default function Home() {
   return (
     <div>
