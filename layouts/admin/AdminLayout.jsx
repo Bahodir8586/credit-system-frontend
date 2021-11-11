@@ -5,7 +5,6 @@ import {
   MenuIcon,
   UsersIcon,
   UserIcon,
-  UserGroupIcon,
   OfficeBuildingIcon,
   ClipboardListIcon,
   DatabaseIcon,
@@ -106,6 +105,9 @@ const AdminLayout = ({ pageTitle, ...props }) => {
     const newNav = [...fullNavObject[role]];
     const currentlyActive = newNav.find((el) => el.current);
     const currentlyClicked = newNav.find((el) => el.href === router.pathname.replace('/[id]', ''));
+    if (!currentlyClicked) {
+      return;
+    }
     if (currentlyClicked.href === currentlyActive.href) {
       return;
     }

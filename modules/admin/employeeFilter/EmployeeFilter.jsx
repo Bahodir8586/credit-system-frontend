@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { UserAddIcon } from '@heroicons/react/outline';
+import routePaths from '@/route-paths';
 
 const EmployeeFilter = ({ search }) => {
   const [name, setName] = useState('');
@@ -33,6 +36,12 @@ const EmployeeFilter = ({ search }) => {
           Search
         </button>
       </form>
+      <Link href={routePaths['admin']['employees']['add']}>
+        <button className="flex items-center text-base px-4 py-2 font-semibold text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">
+          <UserAddIcon className="h-5 w-5 flex-shrink-0 mr-2" />
+          Add
+        </button>
+      </Link>
     </div>
   );
 };

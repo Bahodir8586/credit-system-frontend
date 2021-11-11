@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
   if (data.status) {
     return {
       redirect: {
-        destination: '/',
+        destination: routePaths[data.role]['index'],
         permanent: false,
       },
     };
