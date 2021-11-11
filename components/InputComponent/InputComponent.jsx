@@ -1,15 +1,19 @@
 import { ExclamationCircleIcon } from '@heroicons/react/solid';
 
 export default function InputComponent({ input, onChange, error }) {
-  const { label, value, placeholder } = input;
+  const { label, value, placeholder, type } = input;
   return (
-    <div>
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
-      <div className="mt-1 relative rounded-md shadow-sm">
+    <div className="flex items-center justify-between">
+      <label className="w-1/3 text-sm font-medium text-gray-700">{label}</label>
+      <div className="w-2/3 mt-1 relative rounded-md shadow-sm">
         <input
-          type="text"
+          type={type}
           name={label}
-          className="block w-full pr-10 border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
+          className={`w-full ${
+            error
+              ? 'border-red-300 text-red-900 focus:ring-red-500 focus:border-red-500 placeholder-red-300'
+              : 'border-gray-300 text-gray-900 focus:ring-gray-500 focus:border-gray-500 placeholder-gray-300'
+          }  focus:outline-none  sm:text-sm rounded-md`}
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}

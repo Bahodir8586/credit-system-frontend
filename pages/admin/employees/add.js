@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
+import EmployeeForm from '@/modules/admin/employeeForm';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -29,13 +30,19 @@ export async function getServerSideProps(context) {
 
 // TODO: page to create new employee
 export default function Home() {
+  const submitForm = (name, email, password, passwordConfirm, role, branch) => {
+    console.log(name, email, password, passwordConfirm, role, branch);
+    // TODO: axios call there
+  };
   return (
     <div>
       <Head>
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="New employee"></AdminLayout>
+      <AdminLayout pageTitle="New employee">
+        <EmployeeForm submitForm={submitForm} />
+      </AdminLayout>
     </div>
   );
 }
