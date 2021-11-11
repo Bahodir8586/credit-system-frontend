@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
-import EmployeeForm from '@/modules/admin/employeeForm';
+import EmployeeForm from '@/modules/admin/employees/employeeForm';
 import axios from '@/utils/axios';
 
 export async function getServerSideProps(context) {
