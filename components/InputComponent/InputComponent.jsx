@@ -16,7 +16,9 @@ export default function InputComponent({ input, onChange, error }) {
           }  focus:outline-none  sm:text-sm rounded-md`}
           placeholder={placeholder}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            onChange(e.target.value);
+          }}
         />
         {error && (
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">

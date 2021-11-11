@@ -5,6 +5,7 @@ import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import EmployeeForm from '@/modules/admin/employeeForm';
+import axios from '@/utils/axios';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -30,9 +31,21 @@ export async function getServerSideProps(context) {
 
 // TODO: page to create new employee
 export default function Home() {
-  const submitForm = (name, email, password, passwordConfirm, role, branch) => {
+  const submitForm = async (name, email, password, passwordConfirm, role, branch) => {
     console.log(name, email, password, passwordConfirm, role, branch);
-    // TODO: axios call there
+    try {
+      const response = await axios.post('/users', {
+        name,
+        email,
+        password,
+        passwordConfirm,
+        role,
+        branch,
+      });
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div>
