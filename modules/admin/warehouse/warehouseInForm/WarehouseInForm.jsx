@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import InputComponent from '@/components/InputComponent';
 import SelectComponent from '@/components/SelectComponent';
+import TextareaComponent from '@/components/TextareaComponent/TextareaComponent';
+import FileInputComponent from '@/components/FileInputComponent/FileInputComponent';
 
 export default function EmployeeForm({ submitForm }) {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState(0);
   const [price, setPrice] = useState(0);
   const [priceDiscount, setPriceDiscount] = useState(0);
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState(undefined);
   return (
     <form
       className="max-w-3xl mx-auto space-y-8 divide-y divide-gray-200 border p-8 bg-gray-50 shadow-md rounded-lg"
       onSubmit={(e) => {
         e.preventDefault();
-        submitForm();
+        submitForm(name, amount, price, priceDiscount, description, image);
       }}
     >
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -45,7 +49,7 @@ export default function EmployeeForm({ submitForm }) {
               input={{
                 label: 'Price',
                 placeholder: 'Price',
-                value: name,
+                value: price,
                 type: 'number',
               }}
               onChange={(val) => setPrice(val)}
@@ -61,6 +65,24 @@ export default function EmployeeForm({ submitForm }) {
               onChange={(val) => setPriceDiscount(val)}
               error={undefined}
             />
+            <TextareaComponent
+              input={{
+                label: 'Description',
+                placeholder: 'Product description...',
+                value: description,
+                type: 'number',
+              }}
+              onChange={(val) => setDescription(val)}
+              error={undefined}
+            />
+            <FileInputComponent
+              input={{
+                label: 'Image of Product',
+                value: image,
+              }}
+              onChange={(val) => setImage(val)}
+              error={undefined}
+            />
           </div>
         </div>
         <div className="pt-5">
@@ -70,7 +92,7 @@ export default function EmployeeForm({ submitForm }) {
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={(e) => {
                 e.preventDefault();
-                submitForm();
+                submitForm(name, amount, price, priceDiscount, description, image);
               }}
             >
               Submit
