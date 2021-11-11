@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Cookies from 'js-cookie';
 
@@ -6,6 +7,7 @@ import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import EmployeeTable from '@/modules/admin/employeeTable';
 import EmployeeFilter from '@/modules/admin/employeeFilter';
+import axios from '@/utils/axios';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -45,8 +47,17 @@ export async function getServerSideProps(context) {
 
 // TODO: table of all employees (assistant + manager) with sort, search
 export default function Home({ people }) {
-  const search = (name) => {
+  const [users, setUsers] = useState(people);
+  const search = async (name) => {
     // TODO: search user according to name
+    try {
+      const response = await axios.get(`/users?name=${name}`);
+      const users = response.data?.data?.users;
+      setUsers(users);
+      console.log(users);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -56,7 +67,7 @@ export default function Home({ people }) {
       </Head>
       <AdminLayout pageTitle="Employees">
         <EmployeeFilter search={search} />
-        <EmployeeTable people={people} />
+        <EmployeeTable people={users} />
       </AdminLayout>
     </div>
   );
