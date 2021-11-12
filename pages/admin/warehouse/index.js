@@ -45,7 +45,43 @@ export async function getServerSideProps(context) {
 
 // TODO: All available products of warehouse
 export default function Home({ products }) {
-  const search = () => {};
+  const search = async () => {};
+  const warehouseIn = async (id, amount) => {
+    try {
+      const response = await axios.patch(`/products/in/${id}`, { amount });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const warehouseOut = async (id, amount) => {
+    try {
+      const response = await axios.patch(`/products/out/${id}`, { amount });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const updateProduct = async (id, name, price, priceDiscount, image, description) => {
+    try {
+      let data;
+      if (image) {
+        data = new FormData();
+        data.append('name', name);
+        data.append('amount', amount);
+        data.append('price', price);
+        data.append('priceDiscount', priceDiscount);
+        data.append('description', description);
+        data.append('image', image);
+      } else {
+        data = { name, price, priceDiscount, description };
+      }
+      const response = await axios.patch(`/products/${id}`, data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Head>
@@ -54,7 +90,12 @@ export default function Home({ products }) {
       </Head>
       <AdminLayout pageTitle="Warehouse">
         <WarehouseFilter search={search} />
-        <WarehouseTable products={products} />
+        <WarehouseTable
+          products={products}
+          warehouseIn={warehouseIn}
+          warehouseOut={warehouseOut}
+          updateProduct={updateProduct}
+        />
       </AdminLayout>
     </div>
   );
