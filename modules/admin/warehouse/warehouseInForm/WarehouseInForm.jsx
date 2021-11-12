@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import InputComponent from '@/components/inputComponent';
-import SelectComponent from '@/components/selectComponent';
 import TextareaComponent from '@/components/textareaComponent/TextareaComponent';
 import FileInputComponent from '@/components/fileInputComponent/FileInputComponent';
 
