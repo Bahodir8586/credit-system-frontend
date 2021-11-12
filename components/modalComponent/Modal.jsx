@@ -1,6 +1,5 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/outline';
 
 export default function Modal({ title, text, show, onConfirm, onCancel, ...props }) {
   return (
