@@ -76,7 +76,7 @@ export default function WarehouseTable({ products, warehouseIn, warehouseOut, up
                         />
                         <PencilIcon
                           className="rounded transition duration-200 w-8 h-8 text-white bg-indigo-600 cursor-pointer hover:bg-indigo-800"
-                          onClick={() => updateProduct(product._id)}
+                          onClick={() => updateProduct(product, product._id)}
                         />
                       </div>
                     </td>

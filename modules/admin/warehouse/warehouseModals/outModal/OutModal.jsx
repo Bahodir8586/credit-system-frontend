@@ -13,7 +13,6 @@ export default function OutModal({ show, onConfirm, onCancel }) {
         onConfirm(amount);
       }}
       onCancel={() => {
-        setAmount(0);
         onCancel();
       }}
     >

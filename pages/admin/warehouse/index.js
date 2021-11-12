@@ -55,6 +55,7 @@ export default function Home({ products }) {
   const [showOutModal, setShowOutModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [productId, setProductId] = useState(undefined);
+  const [product, setProduct] = useState({});
   const search = async () => {};
   const warehouseIn = async (id, amount) => {
     console.log(id, amount);
@@ -82,8 +83,10 @@ export default function Home({ products }) {
     }
   };
   const updateProduct = async (id, name, price, priceDiscount, image, description) => {
+    console.log(id, name, price, priceDiscount, image, description);
     setShowEditModal(false);
     setProductId(undefined);
+    setProduct({});
     try {
       let data;
       if (image) {
@@ -124,8 +127,9 @@ export default function Home({ products }) {
             setProductId(id);
             setShowOutModal(true);
           }}
-          updateProduct={(id) => {
+          updateProduct={(prod, id) => {
             setProductId(id);
+            setProduct(prod);
             setShowEditModal(true);
           }}
         />
@@ -150,12 +154,14 @@ export default function Home({ products }) {
           }}
         />
         <EditModal
+          product={product}
           show={showEditModal}
           onConfirm={(name, price, priceDiscount, image, description) => {
             updateProduct(productId, name, price, priceDiscount, image, description);
           }}
           onCancel={() => {
             setProductId(undefined);
+            setProduct({});
             setShowEditModal(false);
           }}
         />
