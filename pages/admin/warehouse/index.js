@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Cookies from 'js-cookie';
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
@@ -9,6 +9,8 @@ import AdminLayout from '@/layouts/admin/AdminLayout';
 import WarehouseTable from '@/modules/admin/warehouse/warehouseTable';
 import WarehouseFilter from '@/modules/admin/warehouse/warehouseFilter';
 import Modal from '@/components/Modal';
+import InputComponent from '@/components/InputComponent';
+import axios from '@/utils/axios';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -48,17 +50,23 @@ export async function getServerSideProps(context) {
 
 // TODO: All available products of warehouse
 export default function Home({ products }) {
-  const [showModal, setShowModal] = useState(false);
-  const search = async () => {
-    toast.success('Hello');
-    setShowModal(true);
-  };
+  const [showInModal, setShowInModal] = useState(false);
+  const [showOutModal, setShowOutModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [amount, setAmount] = useState(0);
+  const [productId, setProductId] = useState(undefined);
+  const search = async () => {};
   const warehouseIn = async (id, amount) => {
+    setShowInModal(false);
+    setAmount(0);
+    setProductId(undefined);
     try {
       const response = await axios.patch(`/products/in/${id}`, { amount });
+      toast.success('Successfully added');
       console.log(response);
     } catch (error) {
       console.log(error);
+      toast.error('Failed to add product');
     }
   };
   const warehouseOut = async (id, amount) => {
@@ -95,28 +103,36 @@ export default function Home({ products }) {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      
+
       <AdminLayout pageTitle="Warehouse">
         <WarehouseFilter search={search} />
         <WarehouseTable
           products={products}
-          warehouseIn={warehouseIn}
+          warehouseIn={(id) => {
+            setProductId(id);
+            setShowInModal(true);
+          }}
           warehouseOut={warehouseOut}
           updateProduct={updateProduct}
         />
         <Modal
           title="Modal"
-          text="lorem ipsum"
-          show={showModal}
+          show={showInModal}
           onConfirm={() => {
-            alert('Confirm');
-            setShowModal(false);
+            warehouseIn(productId, amount);
           }}
           onCancel={() => {
-            alert('Cancel');
-            setShowModal(false);
+            setAmount(0);
+            setProductId(undefined);
+            setShowInModal(false);
           }}
-        />
+        >
+          <InputComponent
+            input={{ label: 'Amount', type: 'number', placeholder: 'Amount', value: amount }}
+            onChange={(val) => setAmount(val)}
+            error={undefined}
+          />
+        </Modal>
       </AdminLayout>
     </div>
   );

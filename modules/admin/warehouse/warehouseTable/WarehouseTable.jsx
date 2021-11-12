@@ -66,9 +66,18 @@ export default function WarehouseTable({ products, warehouseIn, warehouseOut, up
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex justify-center items-center  space-x-4">
-                        <PlusIcon className="rounded transition duration-200 w-8 h-8 text-white bg-green-600 cursor-pointer hover:bg-green-800" />
-                        <MinusIcon className="rounded transition duration-200 w-8 h-8 text-white bg-red-600 cursor-pointer hover:bg-red-800" />
-                        <PencilIcon className="rounded transition duration-200 w-8 h-8 text-white bg-indigo-600 cursor-pointer hover:bg-indigo-800" />
+                        <PlusIcon
+                          className="rounded transition duration-200 w-8 h-8 text-white bg-green-600 cursor-pointer hover:bg-green-800"
+                          onClick={() => warehouseIn(product._id)}
+                        />
+                        <MinusIcon
+                          className="rounded transition duration-200 w-8 h-8 text-white bg-red-600 cursor-pointer hover:bg-red-800"
+                          onClick={() => warehouseOut(product._id)}
+                        />
+                        <PencilIcon
+                          className="rounded transition duration-200 w-8 h-8 text-white bg-indigo-600 cursor-pointer hover:bg-indigo-800"
+                          onClick={() => updateProduct(product._id)}
+                        />
                       </div>
                     </td>
                   </tr>
