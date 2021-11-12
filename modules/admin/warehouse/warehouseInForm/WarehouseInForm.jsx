@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import InputComponent from '@/components/InputComponent';
-import SelectComponent from '@/components/SelectComponent';
-import TextareaComponent from '@/components/TextareaComponent/TextareaComponent';
-import FileInputComponent from '@/components/FileInputComponent/FileInputComponent';
+import InputComponent from '@/components/inputComponent';
+import SelectComponent from '@/components/selectComponent';
+import TextareaComponent from '@/components/textareaComponent/TextareaComponent';
+import FileInputComponent from '@/components/fileInputComponent/FileInputComponent';
 
 export default function EmployeeForm({ submitForm }) {
   const [name, setName] = useState('');

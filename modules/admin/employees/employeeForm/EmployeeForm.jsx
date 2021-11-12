@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import InputComponent from '@/components/InputComponent';
-import SelectComponent from '@/components/SelectComponent';
+import InputComponent from '@/components/inputComponent';
+import SelectComponent from '@/components/selectComponent';
 
 const branches = [
   { value: 1, name: 'Tashkent City Branch' },

@@ -8,8 +8,8 @@ import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import WarehouseTable from '@/modules/admin/warehouse/warehouseTable';
 import WarehouseFilter from '@/modules/admin/warehouse/warehouseFilter';
-import Modal from '@/components/Modal';
-import InputComponent from '@/components/InputComponent';
+import Modal from '@/components/modalComponent';
+import InputComponent from '@/components/inputComponent';
 import axios from '@/utils/axios';
 
 export async function getServerSideProps(context) {
