@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
@@ -31,6 +33,7 @@ export async function getServerSideProps(context) {
 
 // TODO: page to create new employee
 export default function Home() {
+  const router = useRouter();
   const submitForm = async (name, email, password, passwordConfirm, role, branch) => {
     console.log(name, email, password, passwordConfirm, role, branch);
     try {
@@ -43,6 +46,8 @@ export default function Home() {
         branch,
       });
       console.log(response);
+      toast.success('Successfully added');
+      router.replace(routePaths['admin']['employees']['index']);
     } catch (e) {
       console.log(e);
     }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PlusIcon } from '@heroicons/react/outline';
 import routePaths from '@/route-paths';
 
-const WarehouseFilter = ({ search }) => {
+export default function BranchFilter({ search }) {
   const [name, setName] = useState('');
   return (
     <div className="flex flex-col md:flex-row mb-4 justify-center w-full">
@@ -36,14 +36,12 @@ const WarehouseFilter = ({ search }) => {
           Search
         </button>
       </form>
-      <Link passHref={true} href={routePaths['admin']['warehouse']['add']}>
+      <Link passHref={true} href={routePaths['admin']['branches']['add']}>
         <button className="mt-4 md:mt-0 w-48 flex items-center text-base px-4 py-2 font-semibold text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">
           <PlusIcon className="h-5 w-5 flex-shrink-0 mr-2" />
-          New Product
+          New Branch
         </button>
       </Link>
     </div>
   );
-};
-
-export default WarehouseFilter;
+}

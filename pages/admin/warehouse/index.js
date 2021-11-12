@@ -56,7 +56,9 @@ export default function Home({ products }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [productId, setProductId] = useState(undefined);
   const [product, setProduct] = useState({});
+  
   const search = async () => {};
+
   const warehouseIn = async (id, amount) => {
     console.log(id, amount);
     setShowInModal(false);
@@ -107,6 +109,7 @@ export default function Home({ products }) {
       console.log(error);
     }
   };
+
   const inModal = useMemo(
     () => (
       <InModal

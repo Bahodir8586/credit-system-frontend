@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
+import BranchFilter from '@/modules/admin/branches/branchFilter';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -29,13 +30,16 @@ export async function getServerSideProps(context) {
 
 // TODO: page to show all branches as cards
 export default function Home() {
+  const search = (name) => {};
   return (
     <div>
       <Head>
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Branches"></AdminLayout>
+      <AdminLayout pageTitle="Branches">
+        <BranchFilter search={search} />
+      </AdminLayout>
     </div>
   );
 }
