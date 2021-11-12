@@ -6,7 +6,7 @@ import routePaths from '@/route-paths';
 const WarehouseFilter = ({ search }) => {
   const [name, setName] = useState('');
   return (
-    <div className="flex flex-row mb-4 justify-center w-full">
+    <div className="flex flex-col md:flex-row mb-4 justify-center w-full">
       <form
         className="flex md:flex-row justify-between w-full md:space-x-3 space-y-3 md:space-y-0 md:justify-center items-center"
         onSubmit={(e) => {
@@ -37,7 +37,7 @@ const WarehouseFilter = ({ search }) => {
         </button>
       </form>
       <Link href={routePaths['admin']['warehouse']['add']}>
-        <button className="w-48 flex items-center text-base px-4 py-2 font-semibold text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">
+        <button className="mt-4 md:mt-0 w-48 flex items-center text-base px-4 py-2 font-semibold text-white bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200">
           <PlusIcon className="h-5 w-5 flex-shrink-0 mr-2" />
           New Product
         </button>

@@ -1,6 +1,6 @@
 import { PlusIcon, MinusIcon, PencilIcon } from '@heroicons/react/solid';
 
-export default function WarehouseTable({ products }) {
+export default function WarehouseTable({ products, warehouseIn, warehouseOut, updateProduct }) {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
