@@ -5,6 +5,7 @@ import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import WarehouseTable from '@/modules/admin/warehouse/warehouseTable';
+import WarehouseFilter from '@/modules/admin/warehouse/warehouseFilter';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -44,6 +45,7 @@ export async function getServerSideProps(context) {
 
 // TODO: All available products of warehouse
 export default function Home({ products }) {
+  const search = () => {};
   return (
     <div>
       <Head>
@@ -51,6 +53,7 @@ export default function Home({ products }) {
         <meta name="description" content="Credit system application" />
       </Head>
       <AdminLayout pageTitle="Warehouse">
+        <WarehouseFilter search={search} />
         <WarehouseTable products={products} />
       </AdminLayout>
     </div>

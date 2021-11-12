@@ -22,14 +22,13 @@ const routePaths = {
     },
     warehouse: {
       index: '/admin/warehouse',
+      add: '/admin/warehouse/add',
       history: {
         in: {
           index: '/admin/warehouse/in',
-          add: '/admin/warehouse/in/add',
         },
         out: {
           index: '/admin/warehouse/out',
-          add: '/admin/warehouse/out/add',
         },
       },
     },
