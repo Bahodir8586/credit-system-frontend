@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,6 +8,7 @@ import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import WarehouseTable from '@/modules/admin/warehouse/warehouseTable';
 import WarehouseFilter from '@/modules/admin/warehouse/warehouseFilter';
+import Modal from '@/components/Modal';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -46,8 +48,10 @@ export async function getServerSideProps(context) {
 
 // TODO: All available products of warehouse
 export default function Home({ products }) {
+  const [showModal, setShowModal] = useState(false);
   const search = async () => {
     toast.success('Hello');
+    setShowModal(true);
   };
   const warehouseIn = async (id, amount) => {
     try {
@@ -95,6 +99,7 @@ export default function Home({ products }) {
         theme="dark"
         position="bottom-left"
         autoClose={4000}
+        limit={3}
         hideProgressBar={true}
         newestOnTop
         closeOnClick
@@ -110,6 +115,19 @@ export default function Home({ products }) {
           warehouseIn={warehouseIn}
           warehouseOut={warehouseOut}
           updateProduct={updateProduct}
+        />
+        <Modal
+          title="Modal"
+          text="lorem ipsum"
+          show={showModal}
+          onConfirm={() => {
+            alert('Confirm');
+            setShowModal(false);
+          }}
+          onCancel={() => {
+            alert('Cancel');
+            setShowModal(false);
+          }}
         />
       </AdminLayout>
     </div>
