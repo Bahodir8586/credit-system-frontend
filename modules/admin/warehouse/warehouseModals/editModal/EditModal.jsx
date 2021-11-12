@@ -6,7 +6,6 @@ import TextareaComponent from '@/components/textareaComponent';
 import FileInputComponent from '@/components/fileInputComponent';
 
 export default function EditModal({ product, show, onConfirm, onCancel }) {
-  console.log(product);
   const { name, price, priceDiscount, description } = product;
   const [newName, setNewName] = useState(name);
   const [newPrice, setNewPrice] = useState(price);

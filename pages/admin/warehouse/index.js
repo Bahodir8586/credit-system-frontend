@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Head from 'next/head';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -92,7 +92,6 @@ export default function Home({ products }) {
       if (image) {
         data = new FormData();
         data.append('name', name);
-        data.append('amount', amount);
         data.append('price', price);
         data.append('priceDiscount', priceDiscount);
         data.append('description', description);
@@ -108,6 +107,53 @@ export default function Home({ products }) {
       console.log(error);
     }
   };
+  const inModal = useMemo(
+    () => (
+      <InModal
+        show={showInModal}
+        onConfirm={(amount) => {
+          warehouseIn(productId, amount);
+        }}
+        onCancel={() => {
+          setProductId(undefined);
+          setShowInModal(false);
+        }}
+      />
+    ),
+    [productId, showInModal]
+  );
+  const outModal = useMemo(
+    () => (
+      <OutModal
+        show={showOutModal}
+        onConfirm={(amount) => {
+          warehouseOut(productId, amount);
+        }}
+        onCancel={() => {
+          setProductId(undefined);
+          setShowOutModal(false);
+        }}
+      />
+    ),
+    [productId, showOutModal]
+  );
+  const editModal = useMemo(
+    () => (
+      <EditModal
+        product={product}
+        show={showEditModal}
+        onConfirm={(name, price, priceDiscount, image, description) => {
+          updateProduct(productId, name, price, priceDiscount, image, description);
+        }}
+        onCancel={() => {
+          setProductId(undefined);
+          setProduct({});
+          setShowEditModal(false);
+        }}
+      />
+    ),
+    [product, productId, showEditModal]
+  );
   return (
     <div>
       <Head>
@@ -133,38 +179,9 @@ export default function Home({ products }) {
             setShowEditModal(true);
           }}
         />
-        <InModal
-          show={showInModal}
-          onConfirm={(amount) => {
-            warehouseIn(productId, amount);
-          }}
-          onCancel={() => {
-            setProductId(undefined);
-            setShowInModal(false);
-          }}
-        />
-        <OutModal
-          show={showOutModal}
-          onConfirm={(amount) => {
-            warehouseOut(productId, amount);
-          }}
-          onCancel={() => {
-            setProductId(undefined);
-            setShowOutModal(false);
-          }}
-        />
-        <EditModal
-          product={product}
-          show={showEditModal}
-          onConfirm={(name, price, priceDiscount, image, description) => {
-            updateProduct(productId, name, price, priceDiscount, image, description);
-          }}
-          onCancel={() => {
-            setProductId(undefined);
-            setProduct({});
-            setShowEditModal(false);
-          }}
-        />
+        {inModal}
+        {outModal}
+        {editModal}
       </AdminLayout>
     </div>
   );
