@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/outline';
 
-export default function Modal({ title, text, show, onConfirm, onCancel }) {
+export default function Modal({ title, text, show, onConfirm, onCancel, ...props }) {
   return (
     <Transition.Root show={show} as={Fragment}>
       <Dialog
@@ -49,6 +49,7 @@ export default function Modal({ title, text, show, onConfirm, onCancel }) {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">{text}</p>
+                    {props.children}
                   </div>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Cookies from 'js-cookie';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
@@ -95,19 +95,7 @@ export default function Home({ products }) {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <ToastContainer
-        theme="dark"
-        position="bottom-left"
-        autoClose={4000}
-        limit={3}
-        hideProgressBar={true}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      
       <AdminLayout pageTitle="Warehouse">
         <WarehouseFilter search={search} />
         <WarehouseTable

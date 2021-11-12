@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Dialog, Transition } from '@headlessui/react';
 import {
   HomeIcon,
@@ -119,6 +120,19 @@ const AdminLayout = ({ pageTitle, ...props }) => {
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
+      <ToastContainer
+        theme="dark"
+        position="bottom-left"
+        autoClose={4000}
+        limit={3}
+        hideProgressBar={true}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
