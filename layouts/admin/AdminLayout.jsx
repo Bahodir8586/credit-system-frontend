@@ -116,7 +116,7 @@ const AdminLayout = ({ pageTitle, ...props }) => {
     currentlyClicked.current = true;
     fullNavObject[role] = newNav;
     setNavigation(fullNavObject);
-  }, [router.asPath, role]);
+  }, [router.asPath, role, navigation, router.pathname]);
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
