@@ -30,8 +30,8 @@ export async function getServerSideProps(context) {
 
 // TODO: page to create new shop
 export default function Home() {
-  const submit = (name, longitude, latitude, image) => {
-    console.log(name, longitude, latitude, image);
+  const submit = (name, longitude, latitude, address, description, image) => {
+    console.log(name, longitude, latitude, address, description, image);
   };
   return (
     <div>
