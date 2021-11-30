@@ -1,5 +1,5 @@
+// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ToastContainer } from 'react-toastify';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {

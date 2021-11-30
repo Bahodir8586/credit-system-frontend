@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { useState } from 'react';
+import Head from 'next/head';
 
 import Forgot from '@/modules/auth/ForgotPassword';
 import axios from '@/utils/axios';

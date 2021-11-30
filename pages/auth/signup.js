@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Register from '@/modules/auth/Register';
