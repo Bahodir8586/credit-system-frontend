@@ -3,15 +3,15 @@ import Head from 'next/head';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 
-import routePaths from '@/route-paths';
-import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import WarehouseTable from '@/modules/admin/warehouse/warehouseTable';
 import WarehouseFilter from '@/modules/admin/warehouse/warehouseFilter';
-import axios from '@/utils/axios';
 import InModal from '@/modules/admin/warehouse/warehouseModals/inModal';
 import OutModal from '@/modules/admin/warehouse/warehouseModals/outModal';
 import EditModal from '@/modules/admin/warehouse/warehouseModals/editModal';
+import { isAuthenticated } from '@/utils/auth';
+import axios from '@/utils/axios';
+import routePaths from '@/route-paths';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -56,7 +56,7 @@ export default function Home({ products }) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [productId, setProductId] = useState(undefined);
   const [product, setProduct] = useState({});
-  
+
   const search = async () => {};
 
   const warehouseIn = async (id, amount) => {
