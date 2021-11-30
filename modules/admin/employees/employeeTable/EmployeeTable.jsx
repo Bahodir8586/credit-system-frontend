@@ -1,5 +1,6 @@
-import routePaths from '@/route-paths';
 import Link from 'next/link';
+
+import routePaths from '@/route-paths';
 
 const EmployeeTable = ({ people }) => {
   return (

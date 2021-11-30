@@ -86,7 +86,7 @@ export default function EmployeeForm({ submitForm }) {
         </div>
         <div className="pt-5">
           <div className="flex justify-end">
-            <Link passHref={true} href={routePaths.admin.branches.index}>
+            <Link passHref={true} href={routePaths['admin']['branches']['index']}>
               <a className="ml-3 transition duration-200 inline-flex justify-center py-2 px-4 border border-indigo-600 shadow-sm text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
                 Cancel
               </a>

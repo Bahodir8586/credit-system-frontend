@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { UserAddIcon } from '@heroicons/react/outline';
+
 import routePaths from '@/route-paths';
 
 const EmployeeFilter = ({ search }) => {

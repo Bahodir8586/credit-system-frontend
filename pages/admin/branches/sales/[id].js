@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Cookies from 'js-cookie';
 
-import routePaths from '@/route-paths';
-import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
+import { isAuthenticated } from '@/utils/auth';
+import routePaths from '@/route-paths';
+
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);

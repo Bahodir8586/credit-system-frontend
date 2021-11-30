@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import Cookies from 'js-cookie';
+import { useState } from 'react';
 
-import routePaths from '@/route-paths';
-import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import BranchFilter from '@/modules/admin/branches/branchFilter';
+import { isAuthenticated } from '@/utils/auth';
+import axios from '@/utils/axios';
+import routePaths from '@/route-paths';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -25,12 +27,32 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  return { props: {} };
+  try {
+    const response = await fetch('http://localhost:5000/api/branches');
+    const data = await response.json();
+    console.log(data.data?.branches);
+    return {
+      props: { branchesList: data.data?.branches },
+    };
+  } catch (e) {
+    console.log(e);
+    return { props: { branchesList: null } };
+  }
 }
 
 // TODO: page to show all branches as cards
-export default function Home() {
-  const search = (name) => {};
+export default function Home({ branchesList }) {
+  const [branches, setBranches] = useState(branchesList);
+  const search = async (name) => {
+    try {
+      const response = await axios.get(`/users?name=${name}`);
+      const users = response.data?.data?.users;
+      setUsers(users);
+      console.log(users);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Head>

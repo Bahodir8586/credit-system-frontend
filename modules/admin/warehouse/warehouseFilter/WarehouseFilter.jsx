@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { PlusIcon } from '@heroicons/react/outline';
+
 import routePaths from '@/route-paths';
 
 const WarehouseFilter = ({ search }) => {

@@ -1,4 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { ToastContainer } from 'react-toastify';
 import { Dialog, Transition } from '@headlessui/react';
 import {
@@ -14,8 +16,7 @@ import {
   ArrowCircleRightIcon,
   XIcon,
 } from '@heroicons/react/outline';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+
 import routePaths from '@/route-paths';
 
 function classNames(...classes) {

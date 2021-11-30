@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+
 import routePaths from '@/route-paths';
 
 const Register = ({ submitForm, errorMessage }) => {
