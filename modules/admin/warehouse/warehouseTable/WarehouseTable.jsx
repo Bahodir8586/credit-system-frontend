@@ -46,7 +46,7 @@ export default function WarehouseTable({ products, warehouseIn, warehouseOut, up
                         <div className="flex-shrink-0 h-10 w-10">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={`http://localhost:5000/public/img/products/${product.image}`}
+                            src={`http://localhost:6060/public/img/products/${product.image}`}
                             alt=""
                           />
                         </div>

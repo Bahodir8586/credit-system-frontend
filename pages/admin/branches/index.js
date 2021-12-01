@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
     };
   }
   try {
-    const response = await fetch('http://localhost:5000/api/branches');
+    const response = await fetch('http://localhost:6060/api/branches');
     const data = await response.json();
     console.log(data.data?.branches);
     return {

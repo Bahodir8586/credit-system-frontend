@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
   const jwt = data.jwt;
   // TODO: Get employees list there
   try {
-    const response = await fetch('http://localhost:5000/api/users', {
+    const response = await fetch('http://localhost:6060/api/users', {
       headers: { authorization: `Bearer ${jwt}` },
     });
     const data = await response.json();
