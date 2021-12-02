@@ -10,6 +10,7 @@ import InModal from '@/modules/admin/warehouse/warehouseModals/inModal';
 import OutModal from '@/modules/admin/warehouse/warehouseModals/outModal';
 import EditModal from '@/modules/admin/warehouse/warehouseModals/editModal';
 import { isAuthenticated } from '@/utils/auth';
+import { getCookie } from '@/utils/cookies';
 import axios from '@/utils/axios';
 import routePaths from '@/route-paths';
 
@@ -64,7 +65,11 @@ export default function Home({ products }) {
     setShowInModal(false);
     setProductId(undefined);
     try {
-      const response = await axios.patch(`/products/in/${id}`, { amount });
+      const response = await axios.patch(
+        `/products/in/${id}`,
+        { amount },
+        // { headers: { Authorization: `Bearer ${getCookie('jwt')}` } }
+      );
       toast.success('Successfully added');
       console.log(response);
     } catch (error) {

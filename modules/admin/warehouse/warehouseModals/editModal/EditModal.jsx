@@ -9,7 +9,7 @@ export default function EditModal({ product, show, onConfirm, onCancel }) {
   const { name, price, priceDiscount, description } = product;
   const [newName, setNewName] = useState(name);
   const [newPrice, setNewPrice] = useState(price);
-  const [newpriceDiscount, setNewPriceDiscount] = useState(priceDiscount);
+  const [newPriceDiscount, setNewPriceDiscount] = useState(priceDiscount);
   const [newDescription, setNewDescription] = useState(description);
   const [newImage, setNewImage] = useState(undefined);
   return (
@@ -38,7 +38,7 @@ export default function EditModal({ product, show, onConfirm, onCancel }) {
           label: 'Price Discount',
           type: 'number',
           placeholder: 'Price Discount',
-          value: newpriceDiscount,
+          value: newPriceDiscount,
         }}
         onChange={(val) => setNewPriceDiscount(val)}
         error={undefined}

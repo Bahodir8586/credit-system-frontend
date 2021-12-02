@@ -21,7 +21,7 @@ export default function EmployeeForm({ submitForm, branches }) {
       className="max-w-3xl mx-auto space-y-8 divide-y divide-gray-200 border p-8 bg-gray-50 shadow-md rounded-lg"
       onSubmit={(e) => {
         e.preventDefault();
-        submitForm(name, email, password, passwordConfirm, role.value, branch.value);
+        submitForm(name, email, password, passwordConfirm, role.id, branch.id);
       }}
     >
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -88,7 +88,7 @@ export default function EmployeeForm({ submitForm, branches }) {
             className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={(e) => {
               e.preventDefault();
-              submitForm(name, email, password, passwordConfirm, role.value, branch.value);
+              submitForm(name, email, password, passwordConfirm, role.id, branch.id);
             }}
           >
             Save

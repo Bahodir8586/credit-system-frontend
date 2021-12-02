@@ -36,7 +36,7 @@ export default function EmployeeForm({ submitForm }) {
             />
             <FileInputComponent
               input={{
-                label: 'Image of Product',
+                label: 'Image of Branch',
                 value: image,
               }}
               onChange={(val) => setImage(val)}
