@@ -23,17 +23,16 @@ export async function getServerSideProps(context) {
 export default function Signin() {
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
-  const loginHandler = (email, password) => {
-    axios
-      .post('/auth/signin', { email, password })
-      .then((response) => {
-        const role = response.data.data.user.role;
-        router.push(routePaths[role]['index']);
-      })
-      .catch((error) => {
-        console.log(error.response?.data?.message);
-        setErrorMessage(error.response?.data?.message);
-      });
+  const loginHandler = async (email, password) => {
+    try {
+      const response = await axios.post('/auth/signin', { email, password });
+      console.log(response.data.status);
+      const role = response.data.data.user.role;
+      router.push(routePaths[role]['index']);
+    } catch (error) {
+      console.log(error.response?.data?.message);
+      setErrorMessage(error.response?.data?.message);
+    }
   };
   return (
     <div>

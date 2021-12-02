@@ -7,6 +7,7 @@ import AdminLayout from '@/layouts/admin/AdminLayout';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
+  console.log(data)
   if (!data.status) {
     Cookies.remove('jwt');
     return {
