@@ -28,11 +28,21 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  try {
+    const response = await fetch('http://localhost:6060/api/branches');
+    const data = await response.json();
+    const branches = data.data?.branches.map((el) => {
+      return { id: el.id, name: el.name };
+    });
+    return { props: { branches } };
+  } catch (error) {
+    console.log(error);
+  }
   return { props: {} };
 }
 
 // TODO: page to create new employee
-export default function Home() {
+export default function Home({ branches }) {
   const router = useRouter();
   const submitForm = async (name, email, password, passwordConfirm, role, branch) => {
     console.log(name, email, password, passwordConfirm, role, branch);
@@ -59,7 +69,7 @@ export default function Home() {
         <meta name="description" content="Credit system application" />
       </Head>
       <AdminLayout pageTitle="New employee">
-        <EmployeeForm submitForm={submitForm} />
+        <EmployeeForm submitForm={submitForm} branches={branches} />
       </AdminLayout>
     </div>
   );

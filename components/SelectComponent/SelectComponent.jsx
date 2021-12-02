@@ -8,6 +8,7 @@ function classNames(...classes) {
 }
 
 export default function SelectComponent({ label, options, value, onChange }) {
+  console.log(options);
   return (
     <Listbox value={value} onChange={(val) => onChange(val)}>
       {({ open }) => (
@@ -34,7 +35,7 @@ export default function SelectComponent({ label, options, value, onChange }) {
               >
                 {options.map((option) => (
                   <Listbox.Option
-                    key={option.value}
+                    key={option.id}
                     className={({ active }) =>
                       classNames(
                         active ? 'text-white bg-indigo-600' : 'text-gray-900',

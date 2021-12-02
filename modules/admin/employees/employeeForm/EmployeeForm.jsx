@@ -3,19 +3,13 @@ import { useState } from 'react';
 import InputComponent from '@/components/inputComponent';
 import SelectComponent from '@/components/selectComponent';
 
-const branches = [
-  { value: 1, name: 'Tashkent City Branch' },
-  { value: 2, name: 'Bukhara Branch' },
-  { value: 3, name: 'Andijan Branch' },
-];
-
 const roles = [
-  { value: 'manager', name: 'Manager' },
-  { value: 'warehouseManager', name: 'Warehouse Manager' },
-  { value: 'assistant', name: 'Assistant' },
+  { id: 'manager', name: 'Manager' },
+  { id: 'warehouseManager', name: 'Warehouse Manager' },
+  { id: 'assistant', name: 'Assistant' },
 ];
 
-export default function EmployeeForm({ submitForm }) {
+export default function EmployeeForm({ submitForm, branches }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,7 +45,7 @@ export default function EmployeeForm({ submitForm }) {
             <InputComponent
               input={{
                 label: 'Password',
-                placeholder: 'password',
+                placeholder: 'Password',
                 value: password,
                 type: 'password',
               }}
