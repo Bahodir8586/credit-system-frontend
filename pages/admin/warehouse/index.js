@@ -10,7 +10,6 @@ import InModal from '@/modules/admin/warehouse/warehouseModals/inModal';
 import OutModal from '@/modules/admin/warehouse/warehouseModals/outModal';
 import EditModal from '@/modules/admin/warehouse/warehouseModals/editModal';
 import { isAuthenticated } from '@/utils/auth';
-import { getCookie } from '@/utils/cookies';
 import axios from '@/utils/axios';
 import routePaths from '@/route-paths';
 
@@ -42,19 +41,20 @@ export async function getServerSideProps(context) {
     const data = await response.json();
     console.log(data);
     return {
-      props: { products: data.data?.products },
+      props: { productsList: data.data?.products },
     };
   } catch (e) {
     console.log(e);
-    return { props: { products: null } };
+    return { props: { productsList: null } };
   }
 }
 
 // TODO: All available products of warehouse
-export default function Home({ products }) {
+export default function Home({ productsList }) {
   const [showInModal, setShowInModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [products, setProducts] = useState(productsList);
   const [productId, setProductId] = useState(undefined);
   const [product, setProduct] = useState({});
 
@@ -65,13 +65,17 @@ export default function Home({ products }) {
     setShowInModal(false);
     setProductId(undefined);
     try {
-      const response = await axios.patch(
-        `/products/in/${id}`,
-        { amount },
-        // { headers: { Authorization: `Bearer ${getCookie('jwt')}` } }
-      );
-      toast.success('Successfully added');
+      const response = await axios.patch(`/products/in/${id}`, { amount });
       console.log(response);
+      toast.success('Successfully added');
+      const updatedProducts = products?.map((el) => {
+        if (el.id !== id) {
+          return el;
+        }
+        el.amount += +amount;
+        return el;
+      });
+      setProducts(updatedProducts);
     } catch (error) {
       console.log(error);
       toast.error('Failed to add product');
@@ -82,8 +86,16 @@ export default function Home({ products }) {
     setProductId(undefined);
     try {
       const response = await axios.patch(`/products/out/${id}`, { amount });
-      toast.success('Successfully removed');
       console.log(response);
+      toast.success('Successfully removed');
+      const updatedProducts = products?.map((el) => {
+        if (el.id !== id) {
+          return el;
+        }
+        el.amount -= amount;
+        return el;
+      });
+      setProducts(updatedProducts);
     } catch (error) {
       console.log(error);
       toast.error('Failed to remove product');
