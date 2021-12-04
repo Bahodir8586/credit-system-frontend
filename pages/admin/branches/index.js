@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import BranchFilter from '@/modules/admin/branches/branchFilter';
+import Branches from '@/modules/admin/branches';
 import { isAuthenticated } from '@/utils/auth';
 import axios from '@/utils/axios';
 import routePaths from '@/route-paths';
@@ -61,6 +62,7 @@ export default function Home({ branchesList }) {
       </Head>
       <AdminLayout pageTitle="Branches">
         <BranchFilter search={search} />
+        <Branches branches={branches} />
       </AdminLayout>
     </div>
   );
