@@ -35,7 +35,7 @@ export async function getServerSideProps(context) {
       headers: { authorization: `Bearer ${jwt}` },
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data.data?.users);
     return {
       props: { people: data.data?.users },
     };
@@ -59,6 +59,15 @@ export default function Home({ people }) {
       console.log(error);
     }
   };
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`/users/${id}`);
+      const updatedUsers = users.filter((el) => el._id !== id);
+      setUsers(updatedUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Head>
@@ -67,7 +76,7 @@ export default function Home({ people }) {
       </Head>
       <AdminLayout pageTitle="Employees">
         <EmployeeFilter search={search} />
-        <EmployeeTable people={users} />
+        <EmployeeTable people={users} deleteUser={deleteUser} />
       </AdminLayout>
     </div>
   );

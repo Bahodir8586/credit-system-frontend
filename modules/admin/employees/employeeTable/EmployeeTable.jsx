@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import routePaths from '@/route-paths';
 
-const EmployeeTable = ({ people }) => {
+const EmployeeTable = ({ people, deleteUser }) => {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -64,8 +64,16 @@ const EmployeeTable = ({ people }) => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <Link href={`${routePaths.admin.employees.index}/${person._id}`}>
-                        <a className="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <a className="px-4 py-2 rounded-md text-indigo-600 hover:text-white hover:bg-indigo-600 transition duration-200">
+                          Edit
+                        </a>
                       </Link>
+                      <button
+                        className="ml-3 px-4 py-2 rounded-md text-red-600 hover:text-white hover:bg-red-600 transition duration-200 cursor-pointer"
+                        onClick={() => deleteUser(person._id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}
