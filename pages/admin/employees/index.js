@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import EmployeeTable from '@/modules/admin/employees/employeeTable';
@@ -64,8 +65,10 @@ export default function Home({ people }) {
       await axios.delete(`/users/${id}`);
       const updatedUsers = users.filter((el) => el._id !== id);
       setUsers(updatedUsers);
+      toast.success('Successfully deleted');
     } catch (error) {
       console.log(error);
+      toast.error('Failed to delete user');
     }
   };
   return (
