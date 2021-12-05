@@ -44,16 +44,7 @@ export async function getServerSideProps(context) {
 // TODO: page to show all branches as cards
 export default function Home({ branchesList }) {
   const [branches, setBranches] = useState(branchesList);
-  const search = async (name) => {
-    try {
-      const response = await axios.get(`/users?name=${name}`);
-      const users = response.data?.data?.users;
-      setUsers(users);
-      console.log(users);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const search = async (name) => {};
   return (
     <div>
       <Head>

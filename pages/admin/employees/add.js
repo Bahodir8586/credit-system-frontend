@@ -60,6 +60,7 @@ export default function Home({ branches }) {
       router.replace(routePaths['admin']['employees']['index']);
     } catch (e) {
       console.log(e);
+      toast.error('Failed to create employee');
     }
   };
   return (

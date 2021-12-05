@@ -6,6 +6,7 @@ import WarehouseInForm from '@/modules/admin/warehouse/warehouseInForm';
 import { isAuthenticated } from '@/utils/auth';
 import axios from '@/utils/axios';
 import routePaths from '@/route-paths';
+import { toast } from 'react-toastify';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -45,8 +46,10 @@ export default function Home() {
         headers: { 'Content-type': 'multipart/form-data' },
       });
       console.log(response);
+      toast.success('Successfully created');
     } catch (e) {
       console.log(e);
+      toast.error('Failed to create product');
     }
   };
   return (
