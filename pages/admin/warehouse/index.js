@@ -204,5 +204,5 @@ export default function Home({ productsList }) {
         {editModal}
       </AdminLayout>
     </div>
-  )
+  );
 }
