@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import { isAuthenticated } from '@/utils/auth';
 import routePaths from '@/route-paths';
-import Branch from '@/modules/admin/branches/Branch/Branch';
+import Branch from '@/modules/admin/branches/branch/Branch';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
