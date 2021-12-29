@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import AdminLayout from '@/layouts/admin/AdminLayout';
 import { isAuthenticated } from '@/utils/auth';
 import routePaths from '@/route-paths';
+import Branch from '@/modules/admin/branches/Branch/Branch';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -55,7 +56,9 @@ export default function Home({ branch }) {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle={branch.branch.name}></AdminLayout>
+      <AdminLayout pageTitle={branch.branch.name}>
+        <Branch branch={branch} />
+      </AdminLayout>
     </div>
   );
 }
