@@ -35,7 +35,7 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Profile"></AdminLayout>
+      <AdminLayout pageTitle="Warehouse In"></AdminLayout>
     </div>
   );
 }

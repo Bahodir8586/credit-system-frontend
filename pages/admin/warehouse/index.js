@@ -174,6 +174,7 @@ export default function Home({ productsList }) {
     ),
     [product, productId, showEditModal]
   );
+  
   return (
     <div>
       <Head>

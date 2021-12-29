@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
-// TODO: All Out actions of warehouse 
+// TODO: All Out actions of warehouse
 export default function Home() {
   return (
     <div>
@@ -35,7 +35,7 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Profile"></AdminLayout>
+      <AdminLayout pageTitle="Warehouse Out"></AdminLayout>
     </div>
   );
 }

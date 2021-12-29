@@ -3,7 +3,7 @@ import React from 'react';
 
 const BranchInfo = ({ branch }) => {
   return (
-    <>
+    <div>
       <h2 className="text-center font-semibold mb-4 text-lg">Short Description</h2>
       <div className="flex pb-12">
         <div className="w-full px-8">
@@ -19,7 +19,7 @@ const BranchInfo = ({ branch }) => {
           <p>{branch.location.description}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
