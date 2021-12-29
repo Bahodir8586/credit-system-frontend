@@ -28,6 +28,41 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
+const data = [
+  {
+    _id: 1,
+    product: {
+      image:
+        'https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg',
+      name: 'Product one',
+      amount: 150,
+    },
+    amount: 50,
+    timeStamp: '13.12.2021 21:49',
+  },
+  {
+    _id: 2,
+    product: {
+      image:
+        'https://static.vecteezy.com/packs/media/components/global/search-explore-nav/img/vectors/term-bg-1-666de2d941529c25aa511dc18d727160.jpg',
+      name: 'Product two',
+      amount: 10,
+    },
+    amount: 100,
+    timeStamp: '11.12.2021 09:05',
+  },
+  {
+    _id: 3,
+    product: {
+      image: 'https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg',
+      name: 'Product three',
+      amount: 250,
+    },
+    amount: 90,
+    timeStamp: '11.12.2021 09:04',
+  },
+];
+
 // TODO: All In actions of warehouse
 export default function Home() {
   return (
@@ -37,7 +72,7 @@ export default function Home() {
         <meta name="description" content="Credit system application" />
       </Head>
       <AdminLayout pageTitle="Warehouse In">
-        <WarehouseHistoryTable />
+        <WarehouseHistoryTable data={data} />
       </AdminLayout>
     </div>
   );

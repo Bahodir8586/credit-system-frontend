@@ -2,6 +2,7 @@
 import React from 'react';
 
 const WarehouseHistoryTable = ({ data }) => {
+  console.log(data);
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,11 +41,11 @@ const WarehouseHistoryTable = ({ data }) => {
                 {data?.map((item, itemIdx) => (
                   <tr key={item._id} className={itemIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td>
-                      <div className="flex items-center">
+                      <div className="flex items-center px-2">
                         <div className="flex-shrink-0 h-10 w-10">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={`http://localhost:6060/public/img/products/${item.product?.image}`}
+                            src={`${item.product?.image}`}
                             alt=""
                           />
                         </div>
@@ -55,7 +56,7 @@ const WarehouseHistoryTable = ({ data }) => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {item.amount}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
