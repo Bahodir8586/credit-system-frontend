@@ -6,8 +6,8 @@ import EmployeeTable from './EmployeeTable';
 const Branch = ({ branch }) => {
   return (
     <div>
-      <BranchInfo  />
-      <EmployeeTable people={branch.employees}/>
+      <BranchInfo branch={branch.branch} />
+      <EmployeeTable people={branch.employees} />
     </div>
   );
 };
