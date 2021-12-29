@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { PlusIcon, MinusIcon, PencilIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
+
+import routePaths from '@/route-paths';
 
 export default function WarehouseTable({ products, warehouseIn, warehouseOut, updateProduct }) {
   return (
@@ -85,6 +88,20 @@ export default function WarehouseTable({ products, warehouseIn, warehouseOut, up
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="flex justify-center items-center py-4">
+            <Link passHref href={routePaths['admin']['warehouse']['history']['in']}>
+              <button className="mt-4 mr-4 md:mt-0 w-40 flex items-center text-base px-4 py-2 font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
+                <PlusIcon className="h-5 w-5 flex-shrink-0 mr-2" />
+                History In
+              </button>
+            </Link>
+            <Link passHref href={routePaths['admin']['warehouse']['history']['out']}>
+              <button className="mt-4 md:mt-0 w-40 flex items-center text-base px-4 py-2 font-semibold text-white bg-pink-600 rounded-lg shadow-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-pink-200">
+                <MinusIcon className="h-5 w-5 flex-shrink-0 mr-2" />
+                History Out
+              </button>
+            </Link>
           </div>
         </div>
       </div>

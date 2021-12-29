@@ -24,12 +24,8 @@ const routePaths = {
       index: '/admin/warehouse',
       add: '/admin/warehouse/add',
       history: {
-        in: {
-          index: '/admin/warehouse/in',
-        },
-        out: {
-          index: '/admin/warehouse/out',
-        },
+        in: '/admin/warehouse/history/in',
+        out: '/admin/warehouse/history/out',
       },
     },
   },
