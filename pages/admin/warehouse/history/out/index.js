@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
+import WarehouseHistoryTable from '@/modules/admin/warehouse/warehouseHistoryTable/WarehouseHistoryTable';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -35,7 +36,9 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Warehouse Out"></AdminLayout>
+      <AdminLayout pageTitle="Warehouse Out">
+        <WarehouseHistoryTable data={[]} />
+      </AdminLayout>
     </div>
   );
 }

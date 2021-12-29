@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { PlusIcon, MinusIcon, PencilIcon } from '@heroicons/react/solid';
 
 export default function WarehouseTable({ products, warehouseIn, warehouseOut, updateProduct }) {

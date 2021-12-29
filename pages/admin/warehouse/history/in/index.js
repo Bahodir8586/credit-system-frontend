@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import routePaths from '@/route-paths';
 import { isAuthenticated } from '@/utils/auth';
 import AdminLayout from '@/layouts/admin/AdminLayout';
+import WarehouseHistoryTable from '@/modules/admin/warehouse/warehouseHistoryTable/WarehouseHistoryTable';
 
 export async function getServerSideProps(context) {
   const data = await isAuthenticated(context);
@@ -27,7 +28,7 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
-// TODO: All In actions of warehouse 
+// TODO: All In actions of warehouse
 export default function Home() {
   return (
     <div>
@@ -35,7 +36,9 @@ export default function Home() {
         <title>Credit System</title>
         <meta name="description" content="Credit system application" />
       </Head>
-      <AdminLayout pageTitle="Warehouse In"></AdminLayout>
+      <AdminLayout pageTitle="Warehouse In">
+        <WarehouseHistoryTable />
+      </AdminLayout>
     </div>
   );
 }
