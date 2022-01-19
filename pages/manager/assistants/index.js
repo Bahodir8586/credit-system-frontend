@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  return { props: {} };
+  return { props: { } };
 }
 
 export default function Home() {
